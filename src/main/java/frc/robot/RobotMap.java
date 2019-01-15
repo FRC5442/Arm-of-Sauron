@@ -7,6 +7,9 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.*;
+import com.ctre.phoenix.motorcontrol.can.*;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -23,4 +26,16 @@ public class RobotMap {
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
+
+  VictorSPX leftMotor1, leftMotor2, leftMotor3, rightMotor1, rightMotor2, rightMotor3;
+
+  public RobotMap() {
+    leftMotor1 = new VictorSPX(1);
+    leftMotor2 = new VictorSPX(2);
+    leftMotor3 = new VictorSPX(3);
+    rightMotor1 = new VictorSPX(4);
+    rightMotor2 = new VictorSPX(5);
+    rightMotor3 = new VictorSPX(6);
+  }
+
 }
