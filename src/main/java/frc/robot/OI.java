@@ -43,9 +43,9 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
-  Joystick xboxController1;
-  JoystickButton xboxController1A, xboxController1B, xboxController1X, xboxController1Y;
-  JoystickButton xboxController1LBumper, xboxController1RBumper;
+  public static Joystick xboxController1;
+  public static JoystickButton xboxController1A, xboxController1B, xboxController1X, xboxController1Y;
+  public static JoystickButton xboxController1LBumper, xboxController1RBumper;
 
   public OI() {
     xboxController1 = new Joystick(0);

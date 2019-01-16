@@ -37,6 +37,7 @@ public class RobotMap {
 	public static VictorSPX rightController2;
   public static VictorSPX rightController3;
 
+
   public RobotMap() {
     leftController1 = new VictorSPX(1);
     leftController2 = new VictorSPX(2);

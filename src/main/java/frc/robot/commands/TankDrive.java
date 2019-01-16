@@ -6,13 +6,14 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-
+import frc.robot.OI;
+import frc.robot.Robot;
+import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class TankDrive extends Command {
   public TankDrive() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+    requires(Robot.driveTrain);
   }
 
   // Called just before this Command runs the first time
@@ -23,6 +24,7 @@ public class TankDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+  // DriveTrain.Driving(-1* (OI.xboxController1.getRawAxis(1)), -1* (OI.xboxController1.getRawAxis(5)));
   }
 
   // Make this return true when this Command no longer needs to run execute()
