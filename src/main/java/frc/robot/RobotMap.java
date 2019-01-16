@@ -6,7 +6,10 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
-
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.VictorSP;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import edu.wpi.first.wpilibj.*;
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.*;
 
@@ -26,27 +29,27 @@ public class RobotMap {
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
-
-  VictorSPX leftMotor1, leftMotor2, leftMotor3, rightMotor1, rightMotor2, rightMotor3;
-  GroupMotorControllers leftMotorGroup, rightMotorGroup;
+  public static DifferentialDrive driveTrain;
+  public static VictorSPX leftController1;
+	public static VictorSPX leftController2;
+	public static VictorSPX leftController3;
+	public static VictorSPX rightController1;
+	public static VictorSPX rightController2;
+  public static VictorSPX rightController3;
 
   public RobotMap() {
-    leftMotor1 = new VictorSPX(1);
-    leftMotor2 = new VictorSPX(2);
-    leftMotor3 = new VictorSPX(3);
-    rightMotor1 = new VictorSPX(4);
-    rightMotor2 = new VictorSPX(5);
-    rightMotor3 = new VictorSPX(6);
+    leftController1 = new VictorSPX(1);
+    leftController2 = new VictorSPX(2);
+    leftController3 = new VictorSPX(3);
+    rightController1 = new VictorSPX(4);
+    rightController2 = new VictorSPX(5);
+    rightController3 = new VictorSPX(6);
 
-    leftMotorGroup = new GroupMotorControllers();
-    leftMotorGroup.register(leftMotor1);
-    leftMotorGroup.register(leftMotor2);
-    leftMotorGroup.register(leftMotor3);
+    SpeedControllerGroup leftMotorControllers = new SpeedControllerGroup((SpeedController) leftController1, (SpeedController) leftController2, (SpeedController) leftController3);
+    SpeedControllerGroup rightMotorControllers = new SpeedControllerGroup((SpeedController) rightController1, (SpeedController) rightController2, (SpeedController) rightController3);
 
-    rightMotorGroup = new GroupMotorControllers();
-    rightMotorGroup.register(rightMotor1);
-    rightMotorGroup.register(rightMotor2);
-    rightMotorGroup.register(rightMotor3);
+    driveTrain = new DifferentialDrive(leftMotorControllers, rightMotorControllers);
+
 
   }
 
