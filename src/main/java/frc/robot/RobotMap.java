@@ -8,7 +8,7 @@
 package frc.robot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.VictorSP;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.*;
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.*;
@@ -30,24 +30,24 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
   public static DifferentialDrive driveTrain;
-  public static VictorSPX leftController1;
-	public static VictorSPX leftController2;
-	public static VictorSPX leftController3;
-	public static VictorSPX rightController1;
-	public static VictorSPX rightController2;
-  public static VictorSPX rightController3;
+  public static WPI_VictorSPX leftController1;
+	public static WPI_VictorSPX leftController2;
+	public static WPI_VictorSPX leftController3;
+	public static WPI_VictorSPX rightController1;
+	public static WPI_VictorSPX rightController2;
+  public static WPI_VictorSPX rightController3;
 
 
   public RobotMap() {
-    leftController1 = new VictorSPX(1);
-    leftController2 = new VictorSPX(2);
-    leftController3 = new VictorSPX(3);
-    rightController1 = new VictorSPX(4);
-    rightController2 = new VictorSPX(5);
-    rightController3 = new VictorSPX(6);
+    leftController1 = new WPI_VictorSPX(1);
+    leftController2 = new WPI_VictorSPX(2);
+    leftController3 = new WPI_VictorSPX(3);
+    rightController1 = new WPI_VictorSPX(4);
+    rightController2 = new WPI_VictorSPX(5);
+    rightController3 = new WPI_VictorSPX(6);
 
-    SpeedControllerGroup leftMotorControllers = new SpeedControllerGroup((SpeedController) leftController1, (SpeedController) leftController2, (SpeedController) leftController3);
-    SpeedControllerGroup rightMotorControllers = new SpeedControllerGroup((SpeedController) rightController1, (SpeedController) rightController2, (SpeedController) rightController3);
+    SpeedControllerGroup leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
+    SpeedControllerGroup rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
 
     driveTrain = new DifferentialDrive(leftMotorControllers, rightMotorControllers);
 
