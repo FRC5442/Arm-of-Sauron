@@ -35,6 +35,7 @@ public class RobotMap {
 	public static WPI_VictorSPX rightController1, rightController2, rightController3;
   public static WPI_VictorSPX corkController1, corkController2;
   
+  public static SpeedControllerGroup leftMotorControllers, rightMotorControllers, corkMotorControllers;
 
   public RobotMap() {
     leftController1 = new WPI_VictorSPX(1);
@@ -46,13 +47,11 @@ public class RobotMap {
     corkController1 = new WPI_VictorSPX(7);
     corkController2 = new WPI_VictorSPX(8);
 
-    SpeedControllerGroup leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
-    SpeedControllerGroup rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
-    SpeedControllerGroup corkMotorControllers = new SpeedControllerGroup(corkController1, corkController2);
+    leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
+    rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
+    corkMotorControllers = new SpeedControllerGroup(corkController1, corkController2);
 
     driveTrain = new DifferentialDrive(leftMotorControllers, rightMotorControllers);
-
-
   }
 
 }
