@@ -36,7 +36,7 @@ public class RobotMap {
 	public static WPI_VictorSPX rightController1;
 	public static WPI_VictorSPX rightController2;
   public static WPI_VictorSPX rightController3;
-
+  
 
   public RobotMap() {
     leftController1 = new WPI_VictorSPX(1);
