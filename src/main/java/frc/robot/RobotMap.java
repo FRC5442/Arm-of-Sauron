@@ -30,12 +30,10 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
   public static DifferentialDrive driveTrain;
-  public static WPI_VictorSPX leftController1;
-	public static WPI_VictorSPX leftController2;
-	public static WPI_VictorSPX leftController3;
-	public static WPI_VictorSPX rightController1;
-	public static WPI_VictorSPX rightController2;
-  public static WPI_VictorSPX rightController3;
+
+  public static WPI_VictorSPX leftController1, leftController2, leftController3;
+	public static WPI_VictorSPX rightController1, rightController2, rightController3;
+  public static WPI_VictorSPX corkController1, corkController2;
   
 
   public RobotMap() {
@@ -45,9 +43,12 @@ public class RobotMap {
     rightController1 = new WPI_VictorSPX(4);
     rightController2 = new WPI_VictorSPX(5);
     rightController3 = new WPI_VictorSPX(6);
+    corkController1 = new WPI_VictorSPX(7);
+    corkController2 = new WPI_VictorSPX(8);
 
     SpeedControllerGroup leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
     SpeedControllerGroup rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
+    SpeedControllerGroup corkMotorControllers = new SpeedControllerGroup(corkController1, corkController2);
 
     driveTrain = new DifferentialDrive(leftMotorControllers, rightMotorControllers);
 

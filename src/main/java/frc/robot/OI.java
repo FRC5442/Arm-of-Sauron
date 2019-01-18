@@ -9,6 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -53,6 +55,11 @@ public class OI {
     xboxController1B = new JoystickButton(xboxController1, 2);
     xboxController1X = new JoystickButton(xboxController1, 3);
     xboxController1Y = new JoystickButton(xboxController1, 4);
+    xboxController1LBumper = new JoystickButton(xboxController1, 5);
+    xboxController1RBumper = new JoystickButton(xboxController1, 6);
+
+    xboxController1LBumper.whileHeld(new ScrewUp(0.75));
+    xboxController1RBumper.whileHeld(new ScrewDown(0.75));
   }
 
 }

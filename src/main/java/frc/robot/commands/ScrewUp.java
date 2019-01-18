@@ -6,25 +6,37 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import frc.robot.OI;
-import frc.robot.Robot;
-import frc.robot.subsystems.DriveTrain;
-import edu.wpi.first.wpilibj.command.Command;
 
-public class TankDrive extends Command {
-  public TankDrive() {
-    requires(Robot.driveTrain);
+import frc.robot.Robot;
+import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.subsystems.CorkScrew;
+
+public class ScrewUp extends Command {
+
+  double speed;
+
+  public ScrewUp(double speed) {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+
+    requires(new CorkScrew());
+
+    this.speed = speed;
+
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+
+    Robot.corkScrew.ScrewOn(speed);
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    DriveTrain.drive(-1* (OI.xboxController1.getRawAxis(1)), -1* (OI.xboxController1.getRawAxis(5)));
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
