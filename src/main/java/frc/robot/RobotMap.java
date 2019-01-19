@@ -7,7 +7,7 @@
 
 package frc.robot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.*;
 
 /**
@@ -28,9 +28,9 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
   public static DifferentialDrive driveTrain;
 
-  public static WPI_VictorSPX leftController1, leftController2, leftController3;
-	public static WPI_VictorSPX rightController1, rightController2, rightController3;
-  public static WPI_VictorSPX corkController1, corkController2;
+  public static Spark leftController1, leftController2, leftController3;
+	public static Spark rightController1, rightController2, rightController3;
+  public static Spark corkController1, corkController2;
   
   public static SpeedControllerGroup leftMotorControllers, rightMotorControllers, corkMotorControllers;
   
@@ -38,14 +38,14 @@ public class RobotMap {
   public static DoubleSolenoid gearShift;
 
   public RobotMap() {
-    leftController1 = new WPI_VictorSPX(1);
-    leftController2 = new WPI_VictorSPX(2);
-    leftController3 = new WPI_VictorSPX(3);
-    rightController1 = new WPI_VictorSPX(4);
-    rightController2 = new WPI_VictorSPX(5);
-    rightController3 = new WPI_VictorSPX(6);
-    corkController1 = new WPI_VictorSPX(7);
-    corkController2 = new WPI_VictorSPX(8);
+    leftController1 = new Spark(1);
+    leftController2 = new Spark(2);
+    leftController3 = new Spark(3);
+    rightController1 = new Spark(4);
+    rightController2 = new Spark(5);
+    rightController3 = new Spark(6);
+    corkController1 = new Spark(7);
+    corkController2 = new Spark(8);
 
     leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
     rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
