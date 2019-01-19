@@ -33,6 +33,9 @@ public class RobotMap {
   public static WPI_VictorSPX corkController1, corkController2;
   
   public static SpeedControllerGroup leftMotorControllers, rightMotorControllers, corkMotorControllers;
+  
+  public static Compressor compressor;
+  public static DoubleSolenoid gearShift;
 
   public RobotMap() {
     leftController1 = new WPI_VictorSPX(1);
@@ -49,6 +52,9 @@ public class RobotMap {
     corkMotorControllers = new SpeedControllerGroup(corkController1, corkController2);
 
     driveTrain = new DifferentialDrive(leftMotorControllers, rightMotorControllers);
+
+    compressor = new Compressor();
+    gearShift = new DoubleSolenoid(0, 1);
   }
 
 }
