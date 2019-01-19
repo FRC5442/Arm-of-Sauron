@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 /**
  * Add your docs here.
@@ -24,7 +25,9 @@ public class Pneumatics extends Subsystem {
     gearShift = RobotMap.gearShift;
   }
 
-  
+  public void driveGearShift(Value position) {
+    gearShift.set(position);
+  }
 
   @Override
   public void initDefaultCommand() {

@@ -57,8 +57,10 @@ public class OI {
     xboxController1LBumper = new JoystickButton(xboxController1, 5);
     xboxController1RBumper = new JoystickButton(xboxController1, 6);
 
-    xboxController1LBumper.whileHeld(new ScrewUp(0.75));
-    xboxController1RBumper.whileHeld(new ScrewDown(0.75));
+    xboxController1X.whileHeld(new ScrewUp(0.75));
+    xboxController1Y.whileHeld(new ScrewDown(0.75));
+
+    xboxController1LBumper.whenPressed(new GearShift());
   }
 
 }
