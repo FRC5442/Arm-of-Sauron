@@ -15,9 +15,6 @@ public class ScrewDown extends Command {
   double speed;
 
   public ScrewDown(double speed) {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-
     this.speed = speed;
   }
 

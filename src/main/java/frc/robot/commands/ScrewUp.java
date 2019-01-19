@@ -16,11 +16,6 @@ public class ScrewUp extends Command {
   double speed;
 
   public ScrewUp(double speed) {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-
-    requires(new CorkScrew());
-
     this.speed = speed;
 
   }
