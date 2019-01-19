@@ -8,6 +8,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.*;
+import frc.robot.*;
 
 public class GearShift extends Command {
   public GearShift() {
@@ -18,7 +20,12 @@ public class GearShift extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    
+    if (RobotMap.gearShift.get() == DoubleSolenoid.Value.kForward) {
+      Robot.pneumatics.driveGearShift(DoubleSolenoid.Value.kReverse);
+    }
+    else {
+      Robot.pneumatics.driveGearShift(DoubleSolenoid.Value.kForward);    
+    }
   }
 
   // Called repeatedly when this Command is scheduled to run
