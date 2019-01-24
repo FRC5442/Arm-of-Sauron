@@ -8,6 +8,7 @@
 package frc.robot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.*;
 
 /**
@@ -36,6 +37,8 @@ public class RobotMap {
   
   public static Compressor compressor;
   public static DoubleSolenoid gearShift;
+  public static NetworkTable table;
+  public static NetworkTableInstance inst;
 
   public RobotMap() {
     leftController1 = new WPI_VictorSPX(1);
@@ -55,6 +58,9 @@ public class RobotMap {
 
     compressor = new Compressor();
     gearShift = new DoubleSolenoid(0, 1);
+
+    inst = NetworkTableInstance.getDefault();
+		table = inst.getTable("/vision");
   }
 
 }
