@@ -9,6 +9,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.networktables.*;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -34,8 +35,13 @@ public class RobotMap {
   
   public static SpeedControllerGroup leftMotorControllers, rightMotorControllers, corkMotorControllers;
   
+  public static Encoder EncoderLeft; 
+  public static Encoder EncoderRight; 
+
   public static Compressor compressor;
   public static DoubleSolenoid gearShift;
+  public static NetworkTable table;
+  public static NetworkTableInstance inst;
 
   public RobotMap() {
     leftController1 = new Spark(1);
@@ -47,6 +53,10 @@ public class RobotMap {
     corkController1 = new Spark(7);
     corkController2 = new Spark(8);
 
+    EncoderLeft = new Encoder(3, 4, false, Encoder.EncodingType.k4X);
+    EncoderRight = new Encoder(5, 6, false, Encoder.EncodingType.k4X);
+
+
     leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
     rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
     corkMotorControllers = new SpeedControllerGroup(corkController1, corkController2);
@@ -55,6 +65,9 @@ public class RobotMap {
 
     compressor = new Compressor();
     gearShift = new DoubleSolenoid(0, 1);
+
+    inst = NetworkTableInstance.getDefault();
+		table = inst.getTable("/vision");
   }
 
 }
