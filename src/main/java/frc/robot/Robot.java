@@ -23,6 +23,7 @@ import frc.robot.subsystems.*;
  */
 public class Robot extends TimedRobot {
   public static OI m_oi;
+  public static RobotMap m_robotMap;
   public static DriveTrain driveTrain;
   public static Pneumatics pneumatics;
   public static CorkScrew corkScrew;
@@ -37,6 +38,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
+    m_robotMap = new RobotMap();
     driveTrain = new DriveTrain();
     pneumatics = new Pneumatics();
     corkScrew = new CorkScrew();
