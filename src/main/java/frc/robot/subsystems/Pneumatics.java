@@ -22,6 +22,7 @@ public class Pneumatics extends Subsystem {
 
   public Pneumatics() {
     compressor = RobotMap.compressor;
+    compressor.start();
     gearShift = RobotMap.gearShift;
   }
 
