@@ -18,15 +18,28 @@ import frc.robot.RobotMap;
 public class DriveTrain extends Subsystem {
 
   public static DifferentialDrive driveTrain;
+  public static boolean driveMode;
+  public static double course_correction;
+
 
   public DriveTrain() {
     if (RobotMap.driveTrain != null) driveTrain = RobotMap.driveTrain;
+ //   course_correction = PiTable.getX();
+    driveMode = true;
   }
 
   public static void drive(double leftSpeed, double rightSpeed) {
-    driveTrain.tankDrive(leftSpeed, rightSpeed);
+    if(driveMode) {
+      driveTrain.tankDrive(leftSpeed, rightSpeed);
+    }
+    else{
+      driveTrain.arcadeDrive(leftSpeed, course_correction);
+    }
   }
  
+  public void SwitchDriveMode() {
+		driveMode = !driveMode;
+	}
 
   @Override
   public void initDefaultCommand() {

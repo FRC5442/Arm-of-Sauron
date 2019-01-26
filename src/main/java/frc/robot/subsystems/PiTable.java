@@ -12,9 +12,10 @@ public class PiTable extends Subsystem{
     static double X;
 	
 	public static double getX(){
-        entry = piTable.getEntry("course_correction");
-        entry.setDouble(X);
-        System.out.println(X);
+	//    entry = piTable.getEntry("course_correction");
+	//	System.out.println(piTable);
+     //   entry.setDouble(X);
+   //     System.out.println(X);
         
 		return X;
 	}
