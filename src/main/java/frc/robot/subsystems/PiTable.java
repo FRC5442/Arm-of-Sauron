@@ -8,15 +8,12 @@ import edu.wpi.first.networktables.*;
 public class PiTable extends Subsystem{
     static NetworkTableEntry entry;
 	static NetworkTable piTable = RobotMap.table;
-    static double defaultvalue = 0;
     static double X;
 	
 	public static double getX(){
-	//    entry = piTable.getEntry("course_correction");
-	//	System.out.println(piTable);
-     //   entry.setDouble(X);
-   //     System.out.println(X);
-        
+		entry = piTable.getEntry("course_correction");
+		X = entry.getDouble(0);
+		System.out.println(X);
 		return X;
 	}
 	

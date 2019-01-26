@@ -23,17 +23,17 @@ public class DriveTrain extends Subsystem {
 
 
   public DriveTrain() {
-    if (RobotMap.driveTrain != null) driveTrain = RobotMap.driveTrain;
- //   course_correction = PiTable.getX();
+    driveTrain = RobotMap.driveTrain;
     driveMode = true;
   }
 
   public static void drive(double leftSpeed, double rightSpeed) {
+    course_correction = PiTable.getX();
     if(driveMode) {
       driveTrain.tankDrive(leftSpeed, rightSpeed);
     }
     else{
-      driveTrain.arcadeDrive(leftSpeed, course_correction);
+      driveTrain.tankDrive(-course_correction, 0.5);
     }
   }
  

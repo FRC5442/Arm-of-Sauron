@@ -44,14 +44,14 @@ public class RobotMap {
   public static NetworkTableInstance inst;
 
   public RobotMap() {
-    leftController1 = new Spark(1);
-    leftController2 = new Spark(2);
+    leftController1 = new Spark(6);
+    leftController2 = new Spark(7);
     leftController3 = new Spark(3);
-    rightController1 = new Spark(4);
-    rightController2 = new Spark(5);
-    rightController3 = new Spark(6);
-    corkController1 = new Spark(7);
-    corkController2 = new Spark(8);
+    rightController1 = new Spark(8);
+    rightController2 = new Spark(9);
+    rightController3 = new Spark(2);
+    corkController1 = new Spark(4);
+    corkController2 = new Spark(5);
 
     EncoderLeft = new Encoder(3, 4, false, Encoder.EncodingType.k4X);
     EncoderRight = new Encoder(5, 6, false, Encoder.EncodingType.k4X);
