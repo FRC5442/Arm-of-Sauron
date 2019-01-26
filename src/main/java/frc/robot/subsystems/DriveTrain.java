@@ -20,11 +20,14 @@ public class DriveTrain extends Subsystem {
   public static DifferentialDrive driveTrain;
   public static boolean driveMode;
   public static double course_correction;
+  public static double m_speed;
+
 
 
   public DriveTrain() {
     driveTrain = RobotMap.driveTrain;
     driveMode = true;
+    m_speed = 0.5;
   }
 
   public static void drive(double leftSpeed, double rightSpeed) {
@@ -33,7 +36,10 @@ public class DriveTrain extends Subsystem {
       driveTrain.tankDrive(leftSpeed, rightSpeed);
     }
     else{
-      driveTrain.tankDrive(-course_correction, 0.5);
+      if(course_correction < 0.05 && course_correction > -0.05){
+        course_correction = -m_speed;
+      }
+      driveTrain.tankDrive(-course_correction, m_speed);
     }
   }
  
