@@ -8,6 +8,10 @@
 package frc.robot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.Spark;
+
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.networktables.*;
 
@@ -29,9 +33,9 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
   public static DifferentialDrive driveTrain;
 
-  public static Spark leftController1, leftController2, leftController3;
-	public static Spark rightController1, rightController2, rightController3;
-  public static Spark corkController1, corkController2;
+  public static WPI_VictorSPX leftController1, leftController2, leftController3;
+	public static WPI_VictorSPX rightController1, rightController2, rightController3;
+  public static WPI_VictorSPX corkController1, corkController2;
   
   public static SpeedControllerGroup leftMotorControllers, rightMotorControllers, corkMotorControllers;
   
@@ -44,14 +48,14 @@ public class RobotMap {
   public static NetworkTableInstance inst;
 
   public RobotMap() {
-    leftController1 = new Spark(6);
-    leftController2 = new Spark(7);
-    leftController3 = new Spark(3);
-    rightController1 = new Spark(8);
-    rightController2 = new Spark(9);
-    rightController3 = new Spark(1);
-    corkController1 = new Spark(2);
-    corkController2 = new Spark(4);
+    leftController1 = new WPI_VictorSPX(6);
+    leftController2 = new WPI_VictorSPX(7);
+    leftController3 = new WPI_VictorSPX(3);
+    rightController1 = new WPI_VictorSPX(8);
+    rightController2 = new WPI_VictorSPX(9);
+    rightController3 = new WPI_VictorSPX(1);
+    corkController1 = new WPI_VictorSPX(2);
+    corkController2 = new WPI_VictorSPX(4);
 
     EncoderLeft = new Encoder(3, 4, false, Encoder.EncodingType.k4X);
     EncoderRight = new Encoder(5, 6, false, Encoder.EncodingType.k4X);
