@@ -29,10 +29,10 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
   public static DifferentialDrive driveTrain;
 
-  public static WPI_VictorSPX leftController1, leftController2, leftController3;
-	public static WPI_VictorSPX rightController1, rightController2, rightController3;
-  public static Spark corkController1, corkController2;
-  public static WPI_VictorSPX verticalController, wristController, armController;
+  public static SpeedController leftController1, leftController2, leftController3;
+	public static SpeedController rightController1, rightController2, rightController3;
+  public static SpeedController corkController1, corkController2;
+  public static SpeedController verticalController, wristController, armController;
   
   public static SpeedControllerGroup leftMotorControllers, rightMotorControllers, corkMotorControllers;
   
@@ -45,24 +45,24 @@ public class RobotMap {
   public static NetworkTableInstance inst;
 
   public RobotMap() {
-    leftController1 = new WPI_VictorSPX(15);
-    leftController2 = new WPI_VictorSPX(14);
-    leftController3 = new WPI_VictorSPX(3);
-    rightController1 = new WPI_VictorSPX(12);
-    rightController2 = new WPI_VictorSPX(13);
-    rightController3 = new WPI_VictorSPX(2);
+    leftController1 = new WPI_VictorSPX(2);
+    leftController2 = new WPI_VictorSPX(3);
+  //  leftController3 = new WPI_VictorSPX(3);
+    rightController1 = new WPI_VictorSPX(0);
+    rightController2 = new WPI_VictorSPX(1);
+   // rightController3 = new WPI_VictorSPX(2);
     corkController1 = new Spark(4);
     corkController2 = new Spark(5);
-    verticalController = new WPI_VictorSPX(6);
-    wristController = new WPI_VictorSPX(10);
-    armController = new WPI_VictorSPX(12);
+    verticalController = new Spark(6);
+    wristController = new Spark(10);
+    armController = new Spark(12);
 
     EncoderLeft = new Encoder(3, 4, false, Encoder.EncodingType.k4X);
     EncoderRight = new Encoder(5, 6, false, Encoder.EncodingType.k4X);
 
 
-    leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
-    rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
+    leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2/*, leftController3*/);
+    rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2/*, rightController3*/);
     corkMotorControllers = new SpeedControllerGroup(corkController1, corkController2);
 
     driveTrain = new DifferentialDrive(leftMotorControllers, rightMotorControllers);
