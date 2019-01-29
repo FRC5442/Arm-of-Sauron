@@ -12,8 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.CorkScrew;
+import frc.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,6 +26,7 @@ public class Robot extends TimedRobot {
   public static RobotMap robotMap;
   public static DriveTrain driveTrain;
   public static CorkScrew corkScrew;
+  public static Arm arm;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -115,7 +115,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-
+    arm = new Arm();
     driveTrain = new DriveTrain();
   }
 

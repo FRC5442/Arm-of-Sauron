@@ -43,13 +43,14 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
-
+  public static Joystick joystickController2;
   public static Joystick xboxController1;
   public static JoystickButton xboxController1A, xboxController1B, xboxController1X, xboxController1Y;
   public static JoystickButton xboxController1LBumper, xboxController1RBumper;
 
   public OI() {
-    xboxController1 = new Joystick(0);
+    joystickController2 = new Joystick(0);
+    xboxController1 = new Joystick(1);
     xboxController1A = new JoystickButton(xboxController1, 1);
     xboxController1B = new JoystickButton(xboxController1, 2);
     xboxController1X = new JoystickButton(xboxController1, 3);
