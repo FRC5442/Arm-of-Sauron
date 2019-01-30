@@ -29,9 +29,9 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
   public static DifferentialDrive driveTrain;
 
-  public static WPI_VictorSPX leftController1, leftController2, leftController3;
-	public static WPI_VictorSPX rightController1, rightController2, rightController3;
-  public static WPI_VictorSPX corkController1, corkController2;
+  public static SpeedController leftController1, leftController2, leftController3;
+	public static SpeedController rightController1, rightController2, rightController3;
+  public static SpeedController corkController1, corkController2;
   
   public static SpeedControllerGroup leftMotorControllers, rightMotorControllers, corkMotorControllers;
   
@@ -44,15 +44,12 @@ public class RobotMap {
   public static NetworkTableInstance inst;
 
   public RobotMap() {
-    leftController1 = new WPI_VictorSPX(6);
-    leftController2 = new WPI_VictorSPX(7);
-    leftController3 = new WPI_VictorSPX(3);
-    rightController1 = new WPI_VictorSPX(8);
-    rightController2 = new WPI_VictorSPX(9);
-    rightController3 = new WPI_VictorSPX(2);
-    corkController1 = new WPI_VictorSPX(4);
-    corkController2 = new WPI_VictorSPX(5);
-
+    leftController1 = new WPI_VictorSPX(2);
+    leftController2 = new WPI_VictorSPX(3);
+  //  leftController3 = new WPI_VictorSPX(3);
+    rightController1 = new WPI_VictorSPX(0);
+    rightController2 = new WPI_VictorSPX(1);
+   // rightController3 = new WPI_VictorSPX(2);
     EncoderLeft = new Encoder(3, 4, false, Encoder.EncodingType.k4X);
     EncoderRight = new Encoder(5, 6, false, Encoder.EncodingType.k4X);
 
