@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.networktables.*;
+import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -36,8 +37,10 @@ public class RobotMap {
   
   public static SpeedControllerGroup leftMotorControllers, rightMotorControllers, corkMotorControllers;
   
-  public static Encoder EncoderLeft; 
-  public static Encoder EncoderRight; 
+  public static Encoder encoderLeft; 
+  public static Encoder encoderRight;
+  public static AnalogPotentiometer armPot;
+  public static AnalogPotentiometer wristPot;
 
   public static Compressor compressor;
   public static DoubleSolenoid gearShift;
@@ -57,8 +60,10 @@ public class RobotMap {
     wristController = new Spark(10);
     armController = new Spark(12);
 
-    EncoderLeft = new Encoder(3, 4, false, Encoder.EncodingType.k4X);
-    EncoderRight = new Encoder(5, 6, false, Encoder.EncodingType.k4X);
+    encoderLeft = new Encoder(3, 4, false, Encoder.EncodingType.k4X);
+    encoderRight = new Encoder(5, 6, false, Encoder.EncodingType.k4X);
+    armPot = new AnalogPotentiometer(0, 360, 0);
+    wristPot = new AnalogPotentiometer(0, 360, 0);
 
 
     leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2/*, leftController3*/);

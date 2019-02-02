@@ -44,10 +44,6 @@ public class ArmExecutable extends Command{
 			up.cancel();
 			down.cancel();
 		}
-
-		if (OI.joystickController2.getRawAxis(1) > 0 && OI.joystickController2.getRawButtonPressed(1)) {
-			
-		}
 	}
 	
 	@Override
