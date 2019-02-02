@@ -48,21 +48,21 @@ public class RobotMap {
   public static NetworkTableInstance inst;
 
   public RobotMap() {
-    leftController1 = new WPI_VictorSPX(6);
-    leftController2 = new WPI_VictorSPX(7);
-    leftController3 = new WPI_VictorSPX(3);
-    rightController1 = new WPI_VictorSPX(8);
-    rightController2 = new WPI_VictorSPX(9);
-    rightController3 = new WPI_VictorSPX(1);
-    corkController1 = new WPI_VictorSPX(2);
-    corkController2 = new WPI_VictorSPX(4);
+    leftController1 = new WPI_VictorSPX(2);
+    leftController2 = new WPI_VictorSPX(3);
+  //  leftController3 = new WPI_VictorSPX(3);
+    rightController1 = new WPI_VictorSPX(0);
+    rightController2 = new WPI_VictorSPX(1);
+   // rightController3 = new WPI_VictorSPX(1);
+    corkController1 = new WPI_VictorSPX(4);
+    corkController2 = new WPI_VictorSPX(5);
 
     EncoderLeft = new Encoder(3, 4, false, Encoder.EncodingType.k4X);
     EncoderRight = new Encoder(5, 6, false, Encoder.EncodingType.k4X);
 
 
-    leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
-    rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
+    leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2);
+    rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2);
     corkMotorControllers = new SpeedControllerGroup(corkController1, corkController2);
 
     driveTrain = new DifferentialDrive(leftMotorControllers, rightMotorControllers);
