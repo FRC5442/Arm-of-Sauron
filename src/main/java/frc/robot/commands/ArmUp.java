@@ -12,7 +12,7 @@ public class ArmUp extends Command {
 	
 	@Override
 	protected void execute() {
-		Robot.arm.doArm(-OI.joystickController2.getRawAxis(1)) ;
+		Robot.arm.rotateArm(-OI.joystickController2.getRawAxis(1)) ;
 	}
 	
 	@Override
@@ -22,7 +22,7 @@ public class ArmUp extends Command {
 	
 	@Override
 	protected void end() {
-		Robot.arm.doArm(0);
+		Robot.arm.rotateArm(0);
 	}
 
 }

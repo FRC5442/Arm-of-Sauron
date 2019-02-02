@@ -6,8 +6,9 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-import frc.robot.RobotMap;
 
+import frc.robot.RobotMap;
+import frc.robot.commands.ArmExecutable;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -17,13 +18,20 @@ public class Arm extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  public void doArm(double speed) {
+  public void rotateArm(double speed) {
 		RobotMap.armController.set(.4*speed);
-	}
+  }
+  
+  public void moveElevator(double speed) {
+    RobotMap.verticalController.set(.4*speed);
+  }
+
+  public void rotateWrist(double speed) {
+    RobotMap.wristController.set(.4*speed);
+  }
 
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new ArmExecutable());
   }
 }

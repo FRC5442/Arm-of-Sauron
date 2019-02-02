@@ -14,6 +14,7 @@ public class ArmExecutable extends Command{
 
 	Command up;
 	Command down;
+
 	public ArmExecutable() {
 		this.up = new ArmUp();
 		this.down = new ArmDown();
@@ -32,12 +33,20 @@ public class ArmExecutable extends Command{
 				up.start();
 			}
 		}
-		else {
+		else if (OI.joystickController2.getRawAxis(1) < 0) {
 			if(up.isRunning()) 
 				up.cancel();
 			else if (!down.isRunning()) {
 				down.start();				
 			}
+		}
+		else {
+			up.cancel();
+			down.cancel();
+		}
+
+		if (OI.joystickController2.getRawAxis(1) > 0 && OI.joystickController2.getRawButtonPressed(1)) {
+			
 		}
 	}
 	
