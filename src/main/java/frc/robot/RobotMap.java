@@ -54,8 +54,8 @@ public class RobotMap {
     EncoderRight = new Encoder(5, 6, false, Encoder.EncodingType.k4X);
 
 
-    leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
-    rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
+    leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2);
+    rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2);
     corkMotorControllers = new SpeedControllerGroup(corkController1, corkController2);
 
     driveTrain = new DifferentialDrive(leftMotorControllers, rightMotorControllers);
