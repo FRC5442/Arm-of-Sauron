@@ -12,7 +12,7 @@ public class ArmDown extends Command {
 	
 	@Override
 	protected void execute() {
-		Robot.arm.rotateArm(-OI.joystickController2.getRawAxis(1)) ;
+		Robot.arm.rotateArm(0.5) ;
 	}
 	
 	@Override
