@@ -8,26 +8,36 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
-public class WristDown extends Command {
-  public WristDown() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+
+public class WristExecutable extends Command {
+
+  public WristExecutable() {
+    
   }
 
   @Override
-	protected void execute() {
-		Robot.arm.rotateWrist(-0.5) ;
-	}
-	
-  @Override
+  protected void initialize() {
+  }
+
   
-	protected boolean isFinished() {
-		return false;
-	}
-	
-	@Override
-	protected void end() {
-		Robot.arm.rotateWrist(0);
-	}
+  @Override
+  protected void execute() {
+    
+  }
+
+  
+  @Override
+  protected boolean isFinished() {
+    return false;
+  }
+
+  
+  @Override
+  protected void end() {
+  }
+
+  
+  @Override
+  protected void interrupted() {
+  }
 }

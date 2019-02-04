@@ -47,10 +47,14 @@ public class OI {
   public static Joystick xboxController1;
   public static JoystickButton xboxController1A, xboxController1B, xboxController1X, xboxController1Y;
   public static JoystickButton xboxController1LBumper, xboxController1RBumper;
+  public static JoystickButton joystickController2_7, joystickController2_8;
 
   public OI() {
-    joystickController2 = new Joystick(0);
-    xboxController1 = new Joystick(1);
+    joystickController2 = new Joystick(1);
+    joystickController2_7 = new JoystickButton(joystickController2, 7);
+    joystickController2_8 = new JoystickButton(joystickController2, 8);
+
+    xboxController1 = new Joystick(0);
     xboxController1A = new JoystickButton(xboxController1, 1);
     xboxController1B = new JoystickButton(xboxController1, 2);
     xboxController1X = new JoystickButton(xboxController1, 3);
@@ -60,6 +64,11 @@ public class OI {
 
     xboxController1LBumper.whileHeld(new ScrewUp(0.75));
     xboxController1RBumper.whileHeld(new ScrewDown(0.75));
+
+    joystickController2_7.whileHeld(new ElevatorUp());
+    joystickController2_8.whileHeld(new ElevatorDown());
+
+    
   }
 
 }
