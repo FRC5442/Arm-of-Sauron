@@ -39,8 +39,8 @@ public class RobotMap {
   
   public static Encoder encoderLeft; 
   public static Encoder encoderRight;
-  public static AnalogPotentiometer armPot;
-  public static AnalogPotentiometer wristPot;
+ // public static AnalogPotentiometer armPot;
+ // public static AnalogPotentiometer wristPot;
 
   public static Compressor compressor;
   public static DoubleSolenoid gearShift;
@@ -55,15 +55,15 @@ public class RobotMap {
     rightController2 = new WPI_VictorSPX(1);
    // rightController3 = new WPI_VictorSPX(2);
     corkController1 = new Spark(4);
-    corkController2 = new Spark(5);
-    verticalController = new Spark(6);
+    corkController2 = new Spark(6);
+    verticalController = new WPI_VictorSPX(5);
     wristController = new Spark(10);
     armController = new Spark(12);
 
     encoderLeft = new Encoder(3, 4, false, Encoder.EncodingType.k4X);
     encoderRight = new Encoder(5, 6, false, Encoder.EncodingType.k4X);
-    armPot = new AnalogPotentiometer(0, 360, 0);
-    wristPot = new AnalogPotentiometer(0, 360, 0);
+    //armPot = new AnalogPotentiometer(0, 360, 0);
+    //wristPot = new AnalogPotentiometer(0, 360, 0);
 
 
     leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2/*, leftController3*/);

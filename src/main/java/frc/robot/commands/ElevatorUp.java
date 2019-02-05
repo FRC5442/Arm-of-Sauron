@@ -18,7 +18,7 @@ public class ElevatorUp extends Command {
 
   @Override
 	protected void execute() {
-		Robot.arm.moveElevator(0.5) ;
+		Robot.arm.moveElevator(1) ;
 	}
 	
 	@Override

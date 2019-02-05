@@ -43,16 +43,16 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
-  public static Joystick joystickController2;
+  public static Joystick XboxController2;
   public static Joystick xboxController1;
   public static JoystickButton xboxController1A, xboxController1B, xboxController1X, xboxController1Y;
   public static JoystickButton xboxController1LBumper, xboxController1RBumper;
-  public static JoystickButton joystickController2_7, joystickController2_8;
+  public static JoystickButton XboxController2A, XboxController2B;
 
   public OI() {
-    joystickController2 = new Joystick(1);
-    joystickController2_7 = new JoystickButton(joystickController2, 7);
-    joystickController2_8 = new JoystickButton(joystickController2, 8);
+    XboxController2 = new Joystick(1);
+    XboxController2A = new JoystickButton(XboxController2, 1);
+    XboxController2B = new JoystickButton(XboxController2, 2);
 
     xboxController1 = new Joystick(0);
     xboxController1A = new JoystickButton(xboxController1, 1);
@@ -65,8 +65,8 @@ public class OI {
     xboxController1LBumper.whileHeld(new ScrewUp(0.75));
     xboxController1RBumper.whileHeld(new ScrewDown(0.75));
 
-    joystickController2_7.whileHeld(new ElevatorUp());
-    joystickController2_8.whileHeld(new ElevatorDown());
+    XboxController2A.whileHeld(new ElevatorUp());
+    XboxController2B.whileHeld(new ElevatorDown());
 
     
   }
