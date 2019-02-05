@@ -26,14 +26,14 @@ public class ArmExecutable extends Command{
 
 	@Override
 	protected void execute() {
-		if(OI.XboxController2.getRawAxis(1) > 0) {
+		if(OI.xboxController2.getRawAxis(1) > 0) {
 			if(down.isRunning())
 				down.cancel();
 			else if (!up.isRunning()) {
 				up.start();
 			}
 		}
-		else if (OI.XboxController2.getRawAxis(1) < 0) {
+		else if (OI.xboxController2.getRawAxis(1) < 0) {
 			if(up.isRunning()) 
 				up.cancel();
 			else if (!down.isRunning()) {
