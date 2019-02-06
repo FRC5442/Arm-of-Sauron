@@ -66,6 +66,7 @@ public class OI {
 
     xboxController1LBumper.whileHeld(new ScrewUp(0.75));
     xboxController1RBumper.whileHeld(new ScrewDown(0.75));
+    xboxController1X.whenPressed(new TogglePneumatics());
 
     xboxController2A.whileHeld(new ElevatorUp());
     xboxController2B.whileHeld(new ElevatorDown());

@@ -28,6 +28,7 @@ public class Robot extends TimedRobot {
   public static DriveTrain driveTrain;
   public static CorkScrew corkScrew;
   public static Arm arm;
+  public static Pneumatics pneumatics;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -41,6 +42,7 @@ public class Robot extends TimedRobot {
     m_oi = new OI();
     robotMap = new RobotMap();
     arm = new Arm();
+    pneumatics = new Pneumatics();
    // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);

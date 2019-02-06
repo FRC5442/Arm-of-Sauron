@@ -16,13 +16,22 @@ import edu.wpi.first.wpilibj.*;
  */
 public class Pneumatics extends Subsystem {
   
-  Compressor compressor;
+  static Compressor compressor;
   DoubleSolenoid gearShift;
 
   public Pneumatics() {
-    compressor = RobotMap.compressor;
-    compressor.start();
     gearShift = RobotMap.gearShift;
+    compressor = RobotMap.compressor;
+  }
+
+  public void toggleCompressor(){
+    if(compressor.enabled()){
+      compressor.start();
+    }
+    else{
+      compressor.stop();
+    }
+    
   }
 
   
