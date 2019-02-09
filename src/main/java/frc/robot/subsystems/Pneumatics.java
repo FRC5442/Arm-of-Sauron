@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 /**
  * Add your docs here.
@@ -18,18 +19,24 @@ public class Pneumatics extends Subsystem {
   
   static Compressor compressor;
   DoubleSolenoid gearShift;
+  DoubleSolenoid wristSolenoid;
 
   public Pneumatics() {
+    RobotMap.compressor.start();
     gearShift = RobotMap.gearShift;
     compressor = RobotMap.compressor;
   }
 
+  public void toggleWristSolenoid(Value position) {
+    RobotMap.wristSolenoid.set(position);
+  }
+
   public void toggleCompressor(){
     if(compressor.enabled()){
-      compressor.start();
+      compressor.stop();
     }
     else{
-      compressor.stop();
+      compressor.start();
     }
     
   }
