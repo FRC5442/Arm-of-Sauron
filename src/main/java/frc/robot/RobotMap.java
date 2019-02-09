@@ -39,6 +39,7 @@ public class RobotMap {
   
   public static Encoder encoderLeft; 
   public static Encoder encoderRight;
+  public static Encoder encoderVertical;
  // public static AnalogPotentiometer armPot;
  // public static AnalogPotentiometer wristPot;
 
@@ -61,8 +62,12 @@ public class RobotMap {
     wristController = new WPI_VictorSPX(8);
     armController = new WPI_VictorSPX(12);
 
-    encoderLeft = new Encoder(3, 4, false, Encoder.EncodingType.k4X);
-    encoderRight = new Encoder(5, 6, false, Encoder.EncodingType.k4X);
+    //Encoders
+    encoderLeft = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+    encoderRight = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
+    encoderVertical = new Encoder(4, 5 ,false, Encoder.EncodingType.k4X);
+    encoderVertical.setSamplesToAverage(5);
+		encoderVertical.setDistancePerPulse(1.0/360);
     //armPot = new AnalogPotentiometer(0, 360, 0);
     //wristPot = new AnalogPotentiometer(0, 360, 0);
 

@@ -121,6 +121,7 @@ public class Robot extends TimedRobot {
     }
     arm = new Arm();
     driveTrain = new DriveTrain();
+    SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
   }
 
   /**
