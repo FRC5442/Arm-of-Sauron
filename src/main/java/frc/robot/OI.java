@@ -71,8 +71,8 @@ public class OI {
     xboxController1X.whenPressed(new ToggleCompressor());
     xboxController2RBumper.whenPressed(new ToggleWristSolenoid());
 
-    xboxController2A.whenPressed(new _ElevatorUp(7.7));
-    xboxController2B.whileHeld(new _ElevatorDown(0));
+    xboxController2A.whileHeld(new ElevatorUp());
+    xboxController2B.whileHeld(new ElevatorDown());
 
     xboxController2X.whileHeld(new WristUp());
     xboxController2Y.whileHeld(new WristDown());
