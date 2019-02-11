@@ -112,6 +112,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    RobotMap.encoderVertical.reset();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -121,7 +122,6 @@ public class Robot extends TimedRobot {
     }
     arm = new Arm();
     driveTrain = new DriveTrain();
-    SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
   }
 
   /**
@@ -130,6 +130,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
   }
 
   /**

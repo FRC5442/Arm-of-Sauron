@@ -7,22 +7,27 @@
 
 package frc.robot.commands;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ElevatorDown extends Command {
-  public ElevatorDown() {
+public class _ElevatorDown extends Command {
+	private double enc_distance;
+
+  public _ElevatorDown(double distance) {
+		enc_distance = distance;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
 
   @Override
 	protected void execute() {
-		Robot.arm.moveElevator(-1) ;
+		Robot.arm.moveElevator(1) ;
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return (Math.abs(RobotMap.encoderVertical.getDistance()) >= enc_distance);
 	}
 	
 	@Override
