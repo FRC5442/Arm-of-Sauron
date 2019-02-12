@@ -20,6 +20,7 @@ public class Pneumatics extends Subsystem {
   static Compressor compressor;
   DoubleSolenoid gearShift;
   DoubleSolenoid wristSolenoid;
+  DoubleSolenoid chopstick1Solenoid;
 
   public Pneumatics() {
     RobotMap.compressor.start();
@@ -29,6 +30,9 @@ public class Pneumatics extends Subsystem {
 
   public void toggleWristSolenoid(Value position) {
     RobotMap.wristSolenoid.set(position);
+  }
+  public void toggleChopstickSolenoid(Value position) {
+    RobotMap.chopstickSolenoid.set(position);
   }
 
   public void toggleCompressor(){

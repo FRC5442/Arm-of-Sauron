@@ -45,6 +45,7 @@ public class RobotMap {
 
   public static Compressor compressor;
   public static DoubleSolenoid wristSolenoid;
+  public static DoubleSolenoid chopstickSolenoid;
   public static DoubleSolenoid gearShift;
   public static NetworkTable table;
   public static NetworkTableInstance inst;
@@ -81,6 +82,7 @@ public class RobotMap {
     compressor = new Compressor();
     gearShift = new DoubleSolenoid(0, 1);
     wristSolenoid = new DoubleSolenoid(4,5);
+    chopstickSolenoid = new DoubleSolenoid(5,6);
   }
 
 }

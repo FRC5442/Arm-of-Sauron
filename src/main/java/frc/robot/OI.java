@@ -47,10 +47,11 @@ public class OI {
   public static Joystick xboxController2;
   public static JoystickButton xboxController1A, xboxController1B, xboxController1X, xboxController1Y;
   public static JoystickButton xboxController1LBumper, xboxController1RBumper;
-  public static JoystickButton xboxController2A, xboxController2B, xboxController2X, xboxController2Y, xboxController2RBumper;
+  public static JoystickButton xboxController2A, xboxController2B, xboxController2X, xboxController2Y, xboxController2LBumper, xboxController2RBumper;
 
 
   public OI() {
+    //Xbox Controller 1
     xboxController1 = new Joystick(0);
     xboxController1A = new JoystickButton(xboxController1, 1);
     xboxController1B = new JoystickButton(xboxController1, 2);
@@ -59,16 +60,23 @@ public class OI {
     xboxController1LBumper = new JoystickButton(xboxController1, 5);
     xboxController1RBumper = new JoystickButton(xboxController1, 6);
 
+    //Xbox Controller 2
     xboxController2 = new Joystick(1);
     xboxController2A = new JoystickButton(xboxController2, 1);
     xboxController2B = new JoystickButton(xboxController2, 2);
     xboxController2X = new JoystickButton(xboxController2, 3);
     xboxController2Y = new JoystickButton(xboxController2, 4);
+    xboxController2LBumper = new JoystickButton(xboxController2, 5);
     xboxController2RBumper = new JoystickButton(xboxController2, 6);
 
+    //Xbox Controller 1
     xboxController1LBumper.whileHeld(new ScrewUp(0.75));
     xboxController1RBumper.whileHeld(new ScrewDown(0.75));
+
     xboxController1X.whenPressed(new ToggleCompressor());
+
+    //Xbox Controller 1
+    xboxController2LBumper.whenPressed(new ToggleChopstickSolenoid());
     xboxController2RBumper.whenPressed(new ToggleWristSolenoid());
 
     xboxController2A.whileHeld(new ElevatorUp());
