@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.networktables.*;
-import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
