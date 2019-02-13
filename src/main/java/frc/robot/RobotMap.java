@@ -60,7 +60,7 @@ public class RobotMap {
     corkController2 = new WPI_VictorSPX(6);
     verticalController = new WPI_VictorSPX(9);
     wristController = new WPI_VictorSPX(8);
-    armController = new WPI_VictorSPX(12);
+    armController = new WPI_VictorSPX(7);
 
     encoderLeft = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
     encoderRight = new Encoder(2, 3, false, Encoder.EncodingType.k4X);

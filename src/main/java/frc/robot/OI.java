@@ -72,8 +72,10 @@ public class OI {
     //Xbox Controller 1
     xboxController1LBumper.whileHeld(new ScrewUp(0.75));
     xboxController1RBumper.whileHeld(new ScrewDown(0.75));
+    xboxController1X.whileHeld(new ArmDown());
+    xboxController1Y.whileHeld(new ArmUp());
 
-    xboxController1X.whenPressed(new ToggleCompressor());
+//    xboxController1X.whenPressed(new ToggleCompressor());
 
     //Xbox Controller 1
     xboxController2LBumper.whenPressed(new ToggleChopstickSolenoid());
