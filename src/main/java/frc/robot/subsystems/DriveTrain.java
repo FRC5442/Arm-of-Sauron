@@ -16,7 +16,6 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class DriveTrain extends Subsystem {
-
   public static DifferentialDrive driveTrain;
 
   public DriveTrain() {
@@ -27,7 +26,6 @@ public class DriveTrain extends Subsystem {
     driveTrain.tankDrive(leftSpeed, rightSpeed);
   }
  
-
   @Override
   public void initDefaultCommand() {
     setDefaultCommand(new TankDrive());

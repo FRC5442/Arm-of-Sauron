@@ -22,6 +22,7 @@ import frc.robot.subsystems.Arm;
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
+
 public class Robot extends TimedRobot {
   public static OI m_oi;
   public static RobotMap robotMap;
@@ -33,18 +34,14 @@ public class Robot extends TimedRobot {
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-  /**
-   * This function is run when the robot is first started up and should be
-   * used for any initialization code.
-   */
   @Override
   public void robotInit() {
     m_oi = new OI();
     robotMap = new RobotMap();
     arm = new Arm();
     pneumatics = new Pneumatics();
-   // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    // chooser.addOption("My Auto", new MyAutoCommand());
+    driveTrain = new DriveTrain();
+
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 
@@ -120,8 +117,6 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    arm = new Arm();
-    driveTrain = new DriveTrain();
   }
 
   /**

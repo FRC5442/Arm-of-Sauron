@@ -17,6 +17,10 @@ public class Arm extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
+  public Arm() {
+    
+  }
+
   public void rotateArm(double speed) {
 		RobotMap.armController.set(.4*speed);
   }

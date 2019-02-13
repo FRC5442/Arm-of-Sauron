@@ -16,8 +16,6 @@ public class _ElevatorDown extends Command {
 
   public _ElevatorDown(double distance) {
 		enc_distance = distance;
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
   }
 
   @Override

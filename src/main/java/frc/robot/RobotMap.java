@@ -39,8 +39,8 @@ public class RobotMap {
   public static Encoder encoderLeft; 
   public static Encoder encoderRight;
   public static Encoder encoderVertical;
- // public static AnalogPotentiometer armPot;
- // public static AnalogPotentiometer wristPot;
+  //public static AnalogPotentiometer armPot;
+  //public static AnalogPotentiometer wristPot;
 
   public static Compressor compressor;
   public static DoubleSolenoid wristSolenoid;
@@ -52,17 +52,16 @@ public class RobotMap {
   public RobotMap() {
     leftController1 = new WPI_VictorSPX(2);
     leftController2 = new WPI_VictorSPX(3);
-  //  leftController3 = new WPI_VictorSPX(3);
+    //leftController3 = new WPI_VictorSPX(3);
     rightController1 = new WPI_VictorSPX(0);
     rightController2 = new WPI_VictorSPX(1);
-   // rightController3 = new WPI_VictorSPX(2);
+    //rightController3 = new WPI_VictorSPX(2);
     corkController1 = new WPI_VictorSPX(4);
     corkController2 = new WPI_VictorSPX(6);
     verticalController = new WPI_VictorSPX(9);
     wristController = new WPI_VictorSPX(8);
     armController = new WPI_VictorSPX(12);
 
-    //Encoders
     encoderLeft = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
     encoderRight = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
     encoderVertical = new Encoder(4, 5 ,false, Encoder.EncodingType.k4X);
