@@ -80,7 +80,7 @@ public class RobotMap {
     compressor = new Compressor();
     gearShift = new DoubleSolenoid(0, 1);
     wristSolenoid = new DoubleSolenoid(4,5);
-    chopstickSolenoid = new DoubleSolenoid(5,6);
+    chopstickSolenoid = new DoubleSolenoid(2,3);
   }
 
 }

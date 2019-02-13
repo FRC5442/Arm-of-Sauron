@@ -41,6 +41,7 @@ public class Robot extends TimedRobot {
     arm = new Arm();
     pneumatics = new Pneumatics();
     driveTrain = new DriveTrain();
+    corkScrew = new CorkScrew();
 
     SmartDashboard.putData("Auto mode", m_chooser);
   }
