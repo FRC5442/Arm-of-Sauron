@@ -26,7 +26,7 @@ public class Arm extends Subsystem {
   }
   
   public void moveElevator(double speed) {
-    RobotMap.verticalController.set(.4*speed);
+    RobotMap.verticalController.set(speed);
   }
 
   public void rotateWrist(double speed) {
