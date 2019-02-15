@@ -7,30 +7,28 @@
 
 package frc.robot.commands;
 
-import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
-public class ScrewUp extends Command {
+public class ScrewBackCom extends Command {
 
-  double speed;
+  double speedBack;
 
-  public ScrewUp(double speed) {
-    this.speed = speed;
-
+  public ScrewBackCom(double speed) {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+    speedBack = speed;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
-    Robot.corkScrew.ScrewOn(speed);
-
+    Robot.corkScrew.ScrewBack(-1*speedBack);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -42,11 +40,13 @@ public class ScrewUp extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.corkScrew.ScrewBack(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.corkScrew.ScrewBack(0);
   }
 }
