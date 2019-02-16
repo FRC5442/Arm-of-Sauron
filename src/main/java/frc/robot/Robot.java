@@ -44,12 +44,12 @@ public class Robot extends TimedRobot {
       this.level = level;
     }
 
-    private int getLevel() {
+    public int getLevel() {
       return level;
     }
   }
 
-  RocketMode currentRocketMode;
+  public static RocketMode currentRocketMode;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
