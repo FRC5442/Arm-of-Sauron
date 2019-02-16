@@ -32,6 +32,7 @@ public class RobotMap {
   public static SpeedController leftController1, leftController2, leftController3;
 	public static SpeedController rightController1, rightController2, rightController3;
   public static SpeedController corkControllerFront, corkControllerBack;
+  public static SpeedController climbWheel;
   public static SpeedController verticalController, wristController, armController;
   
   public static SpeedControllerGroup leftMotorControllers, rightMotorControllers, corkMotorControllers;
@@ -55,6 +56,7 @@ public class RobotMap {
     //rightController3 = new WPI_VictorSPX(2);
     corkControllerFront = new WPI_VictorSPX(6);
     corkControllerBack = new WPI_VictorSPX(5);
+    climbWheel = new WPI_VictorSPX(4);
     verticalController = new WPI_VictorSPX(9);
     wristController = new WPI_VictorSPX(8);
     armController = new WPI_VictorSPX(7);

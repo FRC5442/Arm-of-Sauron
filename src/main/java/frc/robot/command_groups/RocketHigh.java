@@ -13,8 +13,6 @@ import frc.robot.Robot;
 public class RocketHigh extends CommandGroup {
   
   public RocketHigh() {
-    if (Robot.isHatchMode()) {
-      
-    }
+    
   }
 }

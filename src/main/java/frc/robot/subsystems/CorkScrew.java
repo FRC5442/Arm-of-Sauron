@@ -29,6 +29,10 @@ public class CorkScrew extends Subsystem {
     RobotMap.corkControllerBack.set(speedBack);
   }
 
+  public void moveWheel(double speed){
+    RobotMap.climbWheel.set(speed);
+  }
+
 
   @Override
   public void initDefaultCommand() {
