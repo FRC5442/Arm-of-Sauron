@@ -36,11 +36,8 @@ public class RobotMap {
   
   public static SpeedControllerGroup leftMotorControllers, rightMotorControllers, corkMotorControllers;
   
-  public static Encoder encoderLeft; 
-  public static Encoder encoderRight;
-  public static Encoder encoderVertical;
-  //public static AnalogPotentiometer armPot;
-  //public static AnalogPotentiometer wristPot;
+  public static Encoder encoderLeft, encoderRight;
+  public static Encoder encoderArm, encoderVertical, encoderWrist;
 
   public static Compressor compressor;
   public static DoubleSolenoid wristSolenoid;
@@ -56,8 +53,8 @@ public class RobotMap {
     rightController1 = new WPI_VictorSPX(0);
     rightController2 = new WPI_VictorSPX(1);
     //rightController3 = new WPI_VictorSPX(2);
-    corkControllerFront = new WPI_VictorSPX(5);
-    corkControllerBack = new WPI_VictorSPX(6);
+    corkControllerFront = new WPI_VictorSPX(6);
+    corkControllerBack = new WPI_VictorSPX(5);
     verticalController = new WPI_VictorSPX(9);
     wristController = new WPI_VictorSPX(8);
     armController = new WPI_VictorSPX(7);
@@ -67,8 +64,12 @@ public class RobotMap {
     encoderVertical = new Encoder(4, 5 ,false, Encoder.EncodingType.k4X);
     encoderVertical.setSamplesToAverage(5);
 		encoderVertical.setDistancePerPulse(1.0/360);
-    //armPot = new AnalogPotentiometer(0, 360, 0);
-    //wristPot = new AnalogPotentiometer(0, 360, 0);
+    encoderArm = new Encoder(6, 7, false, Encoder.EncodingType.k4X);
+    encoderArm.setSamplesToAverage(5);
+		encoderArm.setDistancePerPulse(1.0/360);
+    encoderWrist = new Encoder(8, 9, false, Encoder.EncodingType.k4X);
+    encoderWrist.setSamplesToAverage(5);
+		encoderWrist.setDistancePerPulse(1.0/360);
 
 
     leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2/*, leftController3*/);

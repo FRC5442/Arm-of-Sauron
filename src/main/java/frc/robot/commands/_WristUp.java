@@ -5,16 +5,31 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.command_groups;
+package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.command.Command;
 
-public class RocketHigh extends CommandGroup {
-  
-  public RocketHigh() {
-    if (Robot.isHatchMode()) {
-      
-    }
+public class _WristUp extends Command {
+	private double enc_distance;
+
+  public _WristUp(double distance) {
+		enc_distance = distance;
   }
+
+  @Override
+	protected void execute() {
+		Robot.arm.rotateArm(1) ;
+	}
+	
+	@Override
+	protected boolean isFinished() {
+		return (Math.abs(RobotMap.encoderArm.getDistance()) >= enc_distance);
+	}
+	
+	@Override
+	protected void end() {
+		Robot.arm.moveElevator(0);
+	}
 }

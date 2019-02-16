@@ -31,8 +31,24 @@ public class Robot extends TimedRobot {
   public static Arm arm;
   public static Pneumatics pneumatics;
 
+  public static boolean hatchMode;
+
+  public static enum RocketMode {
+    LOW,
+    MIDDLE,
+    HIGH
+  }
+
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
+
+  public static void switchObj() {
+    hatchMode = !hatchMode;
+  }
+
+  public static boolean isHatchMode() {
+    return hatchMode;
+  }
 
   @Override
   public void robotInit() {
@@ -42,6 +58,8 @@ public class Robot extends TimedRobot {
     pneumatics = new Pneumatics();
     driveTrain = new DriveTrain();
     corkScrew = new CorkScrew();
+
+    hatchMode = true;
 
     SmartDashboard.putData("Auto mode", m_chooser);
   }
