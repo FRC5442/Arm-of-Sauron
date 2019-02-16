@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.*;
+import frc.robot.subsystems.Arm;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,29 +22,39 @@ import frc.robot.subsystems.*;
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
+
 public class Robot extends TimedRobot {
   public static OI m_oi;
-  public static RobotMap m_robotMap;
+  public static RobotMap robotMap;
   public static DriveTrain driveTrain;
-  public static Pneumatics pneumatics;
   public static CorkScrew corkScrew;
+  public static Arm arm;
+  public static Pneumatics pneumatics;
+
+  public static boolean hatchMode;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-  /**
-   * This function is run when the robot is first started up and should be
-   * used for any initialization code.
-   */
+  public static void switchObj() {
+    hatchMode = !hatchMode;
+  }
+
+  public static boolean isHatchMode() {
+    return hatchMode;
+  }
+
   @Override
   public void robotInit() {
     m_oi = new OI();
-    m_robotMap = new RobotMap();
-    driveTrain = new DriveTrain();
+    robotMap = new RobotMap();
+    arm = new Arm();
     pneumatics = new Pneumatics();
+    driveTrain = new DriveTrain();
     corkScrew = new CorkScrew();
-   // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    // chooser.addOption("My Auto", new MyAutoCommand());
+
+    hatchMode = true;
+
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 
@@ -111,6 +122,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    RobotMap.encoderVertical.reset();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -118,8 +130,6 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-
-    driveTrain = new DriveTrain();
   }
 
   /**
@@ -128,6 +138,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
   }
 
   /**

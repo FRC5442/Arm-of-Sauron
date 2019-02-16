@@ -7,36 +7,37 @@
 
 package frc.robot.commands;
 
-import frc.robot.Robot;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import frc.robot.RobotMap;
+import frc.robot.*;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ScrewUp extends Command {
-
-  double speed;
-
-  public ScrewUp(double speed) {
-    this.speed = speed;
-
+public class ToggleChopstickSolenoid extends Command {
+  public ToggleChopstickSolenoid() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
-    Robot.corkScrew.ScrewOn(speed);
-
+    if (RobotMap.chopstickSolenoid.get() == DoubleSolenoid.Value.kReverse) {
+			Robot.pneumatics.toggleChopstickSolenoid(DoubleSolenoid.Value.kForward);
+		}
+		else {
+			Robot.pneumatics.toggleChopstickSolenoid(DoubleSolenoid.Value.kReverse);
+		}
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true

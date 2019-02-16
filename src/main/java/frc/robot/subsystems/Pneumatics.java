@@ -17,17 +17,35 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
  */
 public class Pneumatics extends Subsystem {
   
-  Compressor compressor;
+  static Compressor compressor;
   DoubleSolenoid gearShift;
+  DoubleSolenoid wristSolenoid;
+  DoubleSolenoid chopstick1Solenoid;
 
   public Pneumatics() {
-    compressor = RobotMap.compressor;
-    compressor.start();
+    RobotMap.compressor.start();
     gearShift = RobotMap.gearShift;
+    compressor = RobotMap.compressor;
   }
 
   public void driveGearShift(Value position) {
     gearShift.set(position);
+  }
+  
+  public void toggleWristSolenoid(Value position) {
+    RobotMap.wristSolenoid.set(position);
+  }
+  public void toggleChopstickSolenoid(Value position) {
+    RobotMap.chopstickSolenoid.set(position);
+  }
+
+  public void toggleCompressor(){
+    if (compressor.enabled()) {
+      compressor.stop();
+    }
+    else {
+      compressor.start();
+    }
   }
 
   @Override
