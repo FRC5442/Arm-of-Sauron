@@ -39,6 +39,7 @@ public class RobotMap {
   
   public static Encoder encoderLeft, encoderRight;
   public static Encoder encoderArm, encoderVertical, encoderWrist;
+  public static DigitalInput lowElevatorSwitch, highElevatorSwitch;
 
   public static Compressor compressor;
   public static DoubleSolenoid wristSolenoid;
@@ -71,8 +72,10 @@ public class RobotMap {
 		encoderArm.setDistancePerPulse(1.0/360);
     encoderWrist = new Encoder(8, 9, false, Encoder.EncodingType.k4X);
     encoderWrist.setSamplesToAverage(5);
-		encoderWrist.setDistancePerPulse(1.0/360);
-
+    encoderWrist.setDistancePerPulse(1.0/360);
+    
+    lowElevatorSwitch = new DigitalInput(10);
+    highElevatorSwitch = new DigitalInput(11);
 
     leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2/*, leftController3*/);
     rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2/*, rightController3*/);

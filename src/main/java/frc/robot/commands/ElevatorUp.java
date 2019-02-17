@@ -6,8 +6,9 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import frc.robot.Robot;
 
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ElevatorUp extends Command {
@@ -23,7 +24,7 @@ public class ElevatorUp extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return RobotMap.highElevatorSwitch.get();
 	}
 	
 	@Override

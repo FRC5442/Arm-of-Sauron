@@ -8,16 +8,20 @@
 package frc.robot.command_groups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
+import frc.robot.RobotMap;
 import frc.robot.commands.*;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 
-public class RocketHigh extends CommandGroup {
-  
-  public RocketHigh() {
-    int travelDistance = 3 - Robot.currentRocketMode.getLevel();
-    addParallel(new _ElevatorUp(3.535 * Math.abs(travelDistance)));
-    addParallel(new _ArmUp(0.15));
+public class Encoder_Calibration extends CommandGroup {
+  /**
+   * Add your docs here.
+   */
+  public Encoder_Calibration() {
+    addSequential(new ElevatorDown());
+    double encoderValue0 = RobotMap.encoderVertical.getDistance();
+    addSequential(new ElevatorUp());
+    double encoderValue1 = RobotMap.encoderVertical.getDistance();
 
-    Robot.currentRocketMode = Robot.RocketMode.HIGH;
+    SmartDashboard.putNumber("Mast encoder range", (encoderValue1 - encoderValue0));
   }
 }
