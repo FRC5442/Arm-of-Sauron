@@ -47,7 +47,9 @@ public class OI {
   public static Joystick xboxController2;
   public static JoystickButton xboxController1A, xboxController1B, xboxController1X, xboxController1Y;
   public static JoystickButton xboxController1LBumper, xboxController1RBumper;
-  public static JoystickButton xboxController2A, xboxController2B, xboxController2X, xboxController2Y, xboxController2LBumper, xboxController2RBumper;
+  public static JoystickButton xboxController2A, xboxController2B, xboxController2X, xboxController2Y;
+  public static JoystickButton xboxController2LBumper, xboxController2RBumper;
+  public static JoystickButton xboxController2LStickBtn, xboxController2RStickBtn;
 
 
   public OI() {
@@ -68,6 +70,8 @@ public class OI {
     xboxController2Y = new JoystickButton(xboxController2, 4);
     xboxController2LBumper = new JoystickButton(xboxController2, 5);
     xboxController2RBumper = new JoystickButton(xboxController2, 6);
+    xboxController2RStickBtn = new JoystickButton(xboxController2, 10);
+    xboxController2LStickBtn = new JoystickButton(xboxController2, 9);
 
     //Xbox Controller 1
     //xboxController1RBumper.whileHeld(new ScrewFrontCom(0.5)); //+ means bring front or back up
@@ -95,7 +99,8 @@ public class OI {
     xboxController2X.whileHeld(new WristUp());
     xboxController2Y.whileHeld(new WristDown());
 
-    
+    xboxController2LStickBtn.whileHeld(new ArmUp());
+    xboxController2RStickBtn.whileHeld(new ArmDown());    
   }
 
 }
