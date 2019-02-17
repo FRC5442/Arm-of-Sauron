@@ -66,7 +66,7 @@ public class RobotMap {
     encoderVertical = new Encoder(4, 5 ,false, Encoder.EncodingType.k4X);
     encoderVertical.setSamplesToAverage(5);
 		encoderVertical.setDistancePerPulse(1.0/360);
-    encoderArm = new Encoder(6, 7, false, Encoder.EncodingType.k4X);
+    encoderArm = new Encoder(10, 14, false, Encoder.EncodingType.k4X);
     encoderArm.setSamplesToAverage(5);
 		encoderArm.setDistancePerPulse(1.0/360);
     encoderWrist = new Encoder(8, 9, false, Encoder.EncodingType.k4X);
