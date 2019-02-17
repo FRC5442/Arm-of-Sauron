@@ -74,8 +74,8 @@ public class RobotMap {
     encoderWrist.setSamplesToAverage(5);
     encoderWrist.setDistancePerPulse(1.0/360);
     
-    lowElevatorSwitch = new DigitalInput(10);
-    highElevatorSwitch = new DigitalInput(11);
+    lowElevatorSwitch = new DigitalInput(8);
+    //highElevatorSwitch = new DigitalInput(11);
 
     leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2/*, leftController3*/);
     rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2/*, rightController3*/);

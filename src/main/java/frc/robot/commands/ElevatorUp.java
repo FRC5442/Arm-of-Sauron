@@ -19,12 +19,12 @@ public class ElevatorUp extends Command {
 
   @Override
 	protected void execute() {
-		Robot.arm.moveElevator(1) ;
+		Robot.arm.moveElevator(0.5) ;
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		return RobotMap.highElevatorSwitch.get();
+		return false;//RobotMap.highElevatorSwitch.get();
 	}
 	
 	@Override

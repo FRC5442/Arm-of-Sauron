@@ -19,7 +19,7 @@ public class ElevatorDown extends Command {
 
   @Override
 	protected void execute() {
-		Robot.arm.moveElevator(-1) ;
+		Robot.arm.moveElevator(-0.5) ;
 	}
 	
 	@Override
