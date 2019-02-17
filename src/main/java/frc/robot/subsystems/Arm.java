@@ -7,27 +7,34 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.TankDrive;
 import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Add your docs here.
  */
-public class DriveTrain extends Subsystem {
-  public static DifferentialDrive driveTrain;
+public class Arm extends Subsystem {
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
 
-  public DriveTrain() {
-    if (RobotMap.driveTrain != null) driveTrain = RobotMap.driveTrain;
+  public Arm() {
+    
   }
 
-  public static void drive(double leftSpeed, double rightSpeed) {
-    driveTrain.tankDrive(leftSpeed, rightSpeed);
+  public void rotateArm(double speed) {
+		RobotMap.armController.set(.4*speed);
   }
- 
+  
+  public void moveElevator(double speed) {
+    RobotMap.verticalController.set(speed);
+  }
+
+  public void rotateWrist(double speed) {
+    RobotMap.wristController.set(.4*speed);
+  }
+
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new TankDrive());
+ //   setDefaultCommand(new ArmExecutable());
   }
 }

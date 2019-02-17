@@ -7,31 +7,24 @@
 
 package frc.robot.commands;
 
-import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.subsystems.CorkScrew;
+import frc.robot.Robot;
 
-public class ScrewUp extends Command {
-
-  double speed;
-
-  public ScrewUp(double speed) {
-    this.speed = speed;
-
+public class ToggleCompressor extends Command {
+  public ToggleCompressor() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
-    Robot.corkScrew.ScrewOn(speed);
-
+    Robot.pneumatics.toggleCompressor();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
   }
 
   // Make this return true when this Command no longer needs to run execute()

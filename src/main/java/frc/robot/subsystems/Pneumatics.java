@@ -9,30 +9,40 @@ package frc.robot.subsystems;
 
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 /**
  * Add your docs here.
  */
+public class Pneumatics extends Subsystem {
+  
+  static Compressor compressor;
+  DoubleSolenoid gearShift;
+  DoubleSolenoid wristSolenoid;
+  DoubleSolenoid chopstick1Solenoid;
 
-public class CorkScrew extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-
-  public CorkScrew() {
+  public Pneumatics() {
+    RobotMap.compressor.start();
+    gearShift = RobotMap.gearShift;
+    compressor = RobotMap.compressor;
   }
 
-  public void ScrewFront(double speedFront){
-    RobotMap.corkControllerFront.set(speedFront);
+  public void toggleWristSolenoid(Value position) {
+    RobotMap.wristSolenoid.set(position);
+  }
+  public void toggleChopstickSolenoid(Value position) {
+    RobotMap.chopstickSolenoid.set(position);
   }
 
-  public void ScrewBack(double speedBack){
-    RobotMap.corkControllerBack.set(speedBack);
+  public void toggleCompressor(){
+    if (compressor.enabled()) {
+      compressor.stop();
+    }
+    else {
+      compressor.start();
+    }
   }
-
-  public void moveWheel(double speed){
-    RobotMap.climbWheel.set(speed);
-  }
-
 
   @Override
   public void initDefaultCommand() {
