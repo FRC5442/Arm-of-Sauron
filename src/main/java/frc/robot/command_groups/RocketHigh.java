@@ -14,8 +14,8 @@ import frc.robot.commands.*;
 public class RocketHigh extends CommandGroup {
   
   public RocketHigh() {
-    int travelDistance = 3 - Robot.currentRocketMode.getLevel();
-    addParallel(new _ElevatorUp(3.535 * Math.abs(travelDistance)));
+    int travelDistance = Math.abs(3 - Robot.currentRocketMode.getLevel());
+    addParallel(new _ElevatorUp(3.535 * travelDistance));
     addParallel(new _ArmUp(0.15));
 
     Robot.currentRocketMode = Robot.RocketMode.HIGH;
