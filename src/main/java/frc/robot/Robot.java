@@ -159,6 +159,7 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
     SmartDashboard.putNumber("Encoder For Wrist", RobotMap.encoderWrist.getDistance());
+    SmartDashboard.putBoolean("Bottom Limit Switch", RobotMap.lowElevatorSwitch.get());
   }
 
   /**

@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.networktables.*;
+import com.kauailabs.navx.frc.AHRS;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -40,6 +41,8 @@ public class RobotMap {
   public static Encoder encoderLeft, encoderRight;
   public static Encoder encoderArm, encoderVertical, encoderWrist;
   public static DigitalInput lowElevatorSwitch, highElevatorSwitch;
+  public static AHRS navx;
+
 
   public static Compressor compressor;
   public static DoubleSolenoid wristSolenoid;
@@ -74,7 +77,9 @@ public class RobotMap {
     encoderWrist.setSamplesToAverage(5);
     encoderWrist.setDistancePerPulse(1.0/360);
     
-    //lowElevatorSwitch = new DigitalInput(8);
+		navx = new AHRS(SerialPort.Port.kMXP);
+
+    lowElevatorSwitch = new DigitalInput(8);
     //highElevatorSwitch = new DigitalInput(11);
 
     leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2/*, leftController3*/);
