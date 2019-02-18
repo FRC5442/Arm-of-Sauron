@@ -70,11 +70,11 @@ public class RobotMap {
     encoderArm = new Encoder(6, 7, false, Encoder.EncodingType.k4X);
     encoderArm.setSamplesToAverage(5);
 		encoderArm.setDistancePerPulse(1.0/360);
-    encoderWrist = new Encoder(8, 9, false, Encoder.EncodingType.k4X);
+    encoderWrist = new Encoder(14, 15, false, Encoder.EncodingType.k4X);
     encoderWrist.setSamplesToAverage(5);
     encoderWrist.setDistancePerPulse(1.0/360);
     
-    lowElevatorSwitch = new DigitalInput(8);
+    //lowElevatorSwitch = new DigitalInput(8);
     //highElevatorSwitch = new DigitalInput(11);
 
     leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2/*, leftController3*/);
