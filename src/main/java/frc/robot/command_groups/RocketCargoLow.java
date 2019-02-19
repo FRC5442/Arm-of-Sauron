@@ -8,15 +8,17 @@
 package frc.robot.command_groups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
+import frc.robot.RobotMap;
 import frc.robot.commands.*;
 
 public class RocketCargoLow extends CommandGroup {
   
   public RocketCargoLow() {
-  //  int travelDistance = Math.abs(3 - Robot.currentRocketMode.getLevel());
-    addParallel(new _ElevatorUp(1.3));
-
- //   Robot.currentRocketMode = Robot.RocketMode.HIGH;
+    if(RobotMap.encoderVertical.getDistance() > 1.3) {
+      addSequential(new _ElevatorDown(1.3));
+    }
+    else{
+      addSequential(new _ElevatorUp(1.3));
+    }
   }
 }

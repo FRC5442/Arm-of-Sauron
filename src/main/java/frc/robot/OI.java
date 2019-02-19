@@ -80,8 +80,8 @@ public class OI {
 
     xboxController1A.whileHeld(new ScrewFrontCom(-0.5));
     xboxController1B.whileHeld(new ScrewFrontCom(0.5));
-    xboxController1X.whileHeld(new ScrewBackCom(-0.5));
-    xboxController1Y.whileHeld(new ScrewBackCom(0.5));
+    xboxController1X.whileHeld(new ToggleCompressor());
+    xboxController1Y.whileHeld(new ElevatorDown());
 
     xboxController1LBumper.whileHeld(new ClimbDrive(-0.5));
     xboxController1RBumper.whileHeld(new ClimbDrive(0.5));
@@ -101,10 +101,10 @@ public class OI {
     xboxController2LStickBtn.whileHeld(new ArmUp());
     xboxController2RStickBtn.whileHeld(new ArmDown()); 
     
-    xboxController2X.whenPressed(new ToggleCompressor());
-    xboxController2Y.whenPressed(new RocketHatchHigh());
-    xboxController2B.whenPressed(new RocketHatchMiddle());
-    xboxController2A.whenPressed(new RocketCargoLow());
+    xboxController2X.whenPressed(new RocketHeightToggle());
+    xboxController2Y.whenPressed(new RocketHighToggle());
+    xboxController2B.whenPressed(new RocketMiddleToggle());
+    xboxController2A.whenPressed(new RocketLowToggle());
   }
   
 

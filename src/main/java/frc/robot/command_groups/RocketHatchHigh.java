@@ -8,16 +8,19 @@
 package frc.robot.command_groups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
+import frc.robot.RobotMap;
 import frc.robot.commands.*;
 
 public class RocketHatchHigh extends CommandGroup {
   
   public RocketHatchHigh() {
-  //  int travelDistance = Math.abs(3 - Robot.currentRocketMode.getLevel());
-    addParallel(new _ElevatorUp(7.6));
-    addParallel(new _ArmUp(4.5));
-
- //   Robot.currentRocketMode = Robot.RocketMode.HIGH;
+    if(RobotMap.encoderArm.getDistance() > 4.5) {
+      addParallel(new _ElevatorUp(7.6));
+      addParallel(new _ArmDown(4.5));
+    }
+    else {
+      addParallel(new _ElevatorUp(7.6));
+      addParallel(new _ArmUp(4.5));
+    }
   }
 }

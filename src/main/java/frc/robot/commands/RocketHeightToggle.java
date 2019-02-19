@@ -5,15 +5,25 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.command_groups;
+package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.commands.*;
+import frc.robot.*;
+import edu.wpi.first.wpilibj.command.Command;
 
-public class RocketCargoHigh extends CommandGroup {
-  
-  public RocketCargoHigh() {
-    addParallel(new _ElevatorUp(7.6));
-    addParallel(new _ArmUp(5));
+public class RocketHeightToggle extends Command {
+  public RocketHeightToggle() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
+
+  // Called just before this Command runs the first time
+  @Override
+	protected void initialize() {
+		Robot.switchObj();
+	}
+
+	@Override
+	protected boolean isFinished() {
+		return true;
+	}
 }

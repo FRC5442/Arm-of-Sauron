@@ -8,16 +8,12 @@
 package frc.robot.command_groups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
 import frc.robot.commands.*;
 
 public class RocketHatchLow extends CommandGroup {
   
   public RocketHatchLow() {
- //   int travelDistance = Math.abs(3 - Robot.currentRocketMode.getLevel());
+    addParallel(new _ArmDown(0.1));
     addParallel(new _ElevatorDown(0.1));
- //   addParallel(new _ArmDown(0.1));
-
- //   Robot.currentRocketMode = Robot.RocketMode.HIGH;
   }
 }

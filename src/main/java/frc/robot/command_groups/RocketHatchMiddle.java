@@ -8,15 +8,15 @@
 package frc.robot.command_groups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.*;
 
 public class RocketHatchMiddle extends CommandGroup {
   
   public RocketHatchMiddle() {
-    if(RobotMap.encoderArm.getDistance() > 1.5
-    ) {
+    addParallel(new _ElevatorUp(7.6));
+
+    if(RobotMap.encoderArm.getDistance() > 1.5) {
      addParallel(new _ArmDown(1.5));
     }
     else {

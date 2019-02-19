@@ -8,12 +8,18 @@
 package frc.robot.command_groups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.commands.*;
+import frc.robot.Robot;
 
-public class RocketCargoHigh extends CommandGroup {
-  
-  public RocketCargoHigh() {
-    addParallel(new _ElevatorUp(7.6));
-    addParallel(new _ArmUp(5));
+public class RocketLowToggle extends CommandGroup {
+  /**
+   * Add your docs here.
+   */
+  public RocketLowToggle() {
+    if(Robot.hatchMode) {
+      addSequential(new RocketHatchLow());
+    }
+    else {
+      addSequential(new RocketCargoLow());
+    }
   }
 }
