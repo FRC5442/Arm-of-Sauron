@@ -30,6 +30,6 @@ public class _WristUp extends Command {
 	
 	@Override
 	protected void end() {
-		Robot.arm.moveElevator(0);
+		Robot.arm.rotateWrist(0);
 	}
 }

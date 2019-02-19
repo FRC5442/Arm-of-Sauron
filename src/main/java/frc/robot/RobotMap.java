@@ -38,8 +38,7 @@ public class RobotMap {
   
   public static SpeedControllerGroup leftMotorControllers, rightMotorControllers, corkMotorControllers;
   
-  public static Encoder encoderLeft, encoderRight;
-  public static Encoder encoderArm, encoderVertical, encoderWrist;
+  public static Encoder encoderArm, encoderVertical, encoderWrist, encoderScrewBack;
   public static DigitalInput lowElevatorSwitch, highElevatorSwitch;
   public static AHRS navx;
 
@@ -65,15 +64,17 @@ public class RobotMap {
     wristController = new WPI_VictorSPX(8);
     armController = new WPI_VictorSPX(7);
 
-    encoderLeft = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-    encoderRight = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
-    encoderVertical = new Encoder(4, 5 ,false, Encoder.EncodingType.k4X);
+   
+    encoderVertical = new Encoder(6, 7 ,true, Encoder.EncodingType.k4X);
     encoderVertical.setSamplesToAverage(5);
 		encoderVertical.setDistancePerPulse(1.0/360);
-    encoderArm = new Encoder(6, 7, false, Encoder.EncodingType.k4X);
+    encoderArm = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
     encoderArm.setSamplesToAverage(5);
 		encoderArm.setDistancePerPulse(1.0/360);
-    encoderWrist = new Encoder(14, 15, false, Encoder.EncodingType.k4X);
+    encoderWrist = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
+    encoderWrist.setSamplesToAverage(5);
+    encoderWrist.setDistancePerPulse(1.0/360);
+    encoderScrewBack = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
     encoderWrist.setSamplesToAverage(5);
     encoderWrist.setDistancePerPulse(1.0/360);
     
@@ -88,9 +89,9 @@ public class RobotMap {
     driveTrain = new DifferentialDrive(leftMotorControllers, rightMotorControllers);
 
     compressor = new Compressor();
-    gearShift = new DoubleSolenoid(0, 1);
-    wristSolenoid = new DoubleSolenoid(4,5);
-    chopstickSolenoid = new DoubleSolenoid(2,3);
+    gearShift = new DoubleSolenoid(2, 3);
+    wristSolenoid = new DoubleSolenoid(0,1);
+    chopstickSolenoid = new DoubleSolenoid(4,5);
   }
 
 }

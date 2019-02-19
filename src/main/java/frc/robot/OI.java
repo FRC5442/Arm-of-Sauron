@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.command_groups.*;
 import frc.robot.commands.*;
 
 /**
@@ -90,15 +91,21 @@ public class OI {
     //Xbox Controller 2
     xboxController2LBumper.whenPressed(new ToggleChopstickSolenoid());
     xboxController2RBumper.whenPressed(new ToggleWristSolenoid());
-
+/*
     xboxController2A.whileHeld(new ElevatorUp());
     xboxController2B.whileHeld(new ElevatorDown());
 
     xboxController2X.whileHeld(new WristUp());
     xboxController2Y.whileHeld(new WristDown());
-
+*/
     xboxController2LStickBtn.whileHeld(new ArmUp());
-    xboxController2RStickBtn.whileHeld(new ArmDown());    
+    xboxController2RStickBtn.whileHeld(new ArmDown()); 
+    
+    xboxController2X.whenPressed(new ToggleCompressor());
+    xboxController2Y.whenPressed(new RocketHatchHigh());
+    xboxController2B.whenPressed(new RocketHatchMiddle());
+    xboxController2A.whenPressed(new RocketCargoLow());
   }
+  
 
 }

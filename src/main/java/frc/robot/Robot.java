@@ -64,8 +64,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    m_oi = new OI();
     robotMap = new RobotMap();
+    m_oi = new OI();
     arm = new Arm();
     pneumatics = new Pneumatics();
     driveTrain = new DriveTrain();
@@ -141,7 +141,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    RobotMap.encoderVertical.reset();
+    RobotMap.encoderScrewBack.reset();
+    RobotMap.encoderArm.reset();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -158,7 +159,9 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
-    SmartDashboard.putNumber("Encoder For Wrist", RobotMap.encoderWrist.getDistance());
+    SmartDashboard.putNumber("Encoder for Arm", RobotMap.encoderArm.getDistance());
+    SmartDashboard.putNumber("Encoder for ScrewBack", RobotMap.encoderScrewBack.getDistance());
+    SmartDashboard.putNumber("Encoder for Wrist", RobotMap.encoderWrist.getDistance());
     SmartDashboard.putBoolean("Bottom Limit Switch", RobotMap.lowElevatorSwitch.get());
   }
 

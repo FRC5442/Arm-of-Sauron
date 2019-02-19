@@ -11,13 +11,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
 import frc.robot.commands.*;
 
-public class RocketHigh extends CommandGroup {
+public class RocketHatchHigh extends CommandGroup {
   
-  public RocketHigh() {
-    int travelDistance = Math.abs(3 - Robot.currentRocketMode.getLevel());
-    addParallel(new _ElevatorUp(3.535 * travelDistance));
-    addParallel(new _ArmUp(0.15));
+  public RocketHatchHigh() {
+  //  int travelDistance = Math.abs(3 - Robot.currentRocketMode.getLevel());
+    addParallel(new _ElevatorUp(7.6));
+    addParallel(new _ArmUp(4.5));
 
-    Robot.currentRocketMode = Robot.RocketMode.HIGH;
+ //   Robot.currentRocketMode = Robot.RocketMode.HIGH;
   }
 }

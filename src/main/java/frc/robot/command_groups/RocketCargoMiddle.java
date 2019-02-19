@@ -11,19 +11,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
 import frc.robot.commands.*;
 
-public class RocketMiddle extends CommandGroup {
+public class RocketCargoMiddle extends CommandGroup {
   
-  public RocketMiddle() {
-    int travelDistance = Math.abs(3 - Robot.currentRocketMode.getLevel());
-    if (travelDistance < 0) {
-      addParallel(new _ElevatorDown(3.535 * travelDistance));
-      addParallel(new _ArmDown(0.075 * travelDistance));
-    }
-    else {
-      addParallel(new _ElevatorUp(3.535 * travelDistance));
-      addParallel(new _ArmDown(0.075 * travelDistance));
-    }
+  public RocketCargoMiddle() {
+  //  int travelDistance = Math.abs(3 - Robot.currentRocketMode.getLevel());
+    addParallel(new _ElevatorUp(7.6));
+    addParallel(new _ArmUp(4.5));
 
-    Robot.currentRocketMode = Robot.RocketMode.MIDDLE;
+ //   Robot.currentRocketMode = Robot.RocketMode.HIGH;
   }
 }

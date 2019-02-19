@@ -20,12 +20,12 @@ public class _ElevatorDown extends Command {
 
   @Override
 	protected void execute() {
-		Robot.arm.moveElevator(-0.5) ;
+		Robot.arm.moveElevator(-0.75) ;
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		return (Math.abs(RobotMap.encoderVertical.getDistance()) <= enc_distance) || (RobotMap.lowElevatorSwitch.get());
+		return (Math.abs(RobotMap.encoderVertical.getDistance()) <= enc_distance) || (!RobotMap.lowElevatorSwitch.get());
 	}
 	
 	@Override
