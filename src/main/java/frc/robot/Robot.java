@@ -34,14 +34,8 @@ public class Robot extends TimedRobot {
 
   public static boolean hatchMode;
 
-
-
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
-
-  public static void switchObj() {
-    hatchMode = !hatchMode;
-  }
 
   @Override
   public void robotInit() {
@@ -51,8 +45,6 @@ public class Robot extends TimedRobot {
     pneumatics = new Pneumatics();
     driveTrain = new DriveTrain();
     corkScrew = new CorkScrew();
-
-    hatchMode = true;
 
     SmartDashboard.putData("Auto mode", m_chooser);
   }
@@ -139,7 +131,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    SmartDashboard.putBoolean("Hatch Mode", hatchMode);
+    SmartDashboard.putBoolean("Hatch Mode", arm.heightToggle);
     SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
     SmartDashboard.putNumber("Encoder for Arm", RobotMap.encoderArm.getDistance());
     SmartDashboard.putNumber("Encoder for ScrewBack", RobotMap.encoderScrewBack.getDistance());
@@ -152,5 +144,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+  }
+
+  public static void switchHeight() {
+    arm.SwitchHeight();
   }
 }

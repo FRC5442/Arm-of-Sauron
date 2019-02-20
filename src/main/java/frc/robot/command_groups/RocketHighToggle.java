@@ -7,19 +7,24 @@
 
 package frc.robot.command_groups;
 
-import frc.robot.*;
+import frc.robot.Robot;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class RocketHighToggle extends CommandGroup {
   /**
    * Add your docs here.
    */
   public RocketHighToggle() {
-    if(Robot.hatchMode) {
-      addSequential(new RocketHatchHigh());
-    }
-    else {
-      addSequential(new RocketCargoHigh());
+    if (Robot.arm != null) {
+      SmartDashboard.putBoolean("Hatch Test", Robot.arm.getHeight());
+      if(Robot.arm.getHeight()) {
+        addSequential(new RocketHatchHigh(), 5);
+      }
+      else {
+      //  addSequential(new RocketCargoHigh(), 5);
+      }
     }
   }
 }

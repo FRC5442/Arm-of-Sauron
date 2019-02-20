@@ -14,11 +14,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class Arm extends Subsystem {
+  public static boolean heightToggle;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
   public Arm() {
-    
+    heightToggle = true;
   }
 
   public void rotateArm(double speed) {
@@ -33,6 +34,13 @@ public class Arm extends Subsystem {
     RobotMap.wristController.set(.4*speed);
   }
 
+  public void SwitchHeight() {
+		heightToggle = !heightToggle;
+	}
+
+  public boolean getHeight() {
+    return heightToggle;
+  }
   @Override
   public void initDefaultCommand() {
  //   setDefaultCommand(new ArmExecutable());

@@ -15,7 +15,7 @@ public class RocketMiddleToggle extends CommandGroup {
    * Add your docs here.
    */
   public RocketMiddleToggle() {
-    if(Robot.hatchMode) {
+    if(Robot.arm.heightToggle) {
       addSequential(new RocketHatchMiddle());
     }
     else {

@@ -8,14 +8,15 @@
 package frc.robot.command_groups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
+import frc.robot.*;
+import frc.robot.subsystems.Arm;
 
 public class RocketLowToggle extends CommandGroup {
   /**
    * Add your docs here.
    */
   public RocketLowToggle() {
-    if(Robot.hatchMode) {
+    if(Arm.heightToggle) {
       addSequential(new RocketHatchLow());
     }
     else {
