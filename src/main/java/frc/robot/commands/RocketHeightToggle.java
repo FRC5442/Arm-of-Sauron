@@ -6,30 +6,24 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
 
+import frc.robot.*;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class _WristDown extends Command {
-	private double enc_distance;
-
-  public _WristDown(double distance) {
-		enc_distance = distance;
+public class RocketHeightToggle extends Command {
+  public RocketHeightToggle() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
 
+  // Called just before this Command runs the first time
   @Override
-	protected void execute() {
-		Robot.arm.rotateArm(1) ;
+	protected void initialize() {
+		Robot.switchObj();
 	}
-	
+
 	@Override
 	protected boolean isFinished() {
-		return (Math.abs(RobotMap.encoderArm.getDistance()) >= enc_distance);
-	}
-	
-	@Override
-	protected void end() {
-		Robot.arm.rotateWrist(0);
+		return true;
 	}
 }

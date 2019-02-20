@@ -20,7 +20,7 @@ public class _ArmUp extends Command {
 
   @Override
 	protected void execute() {
-		Robot.arm.rotateArm(1) ;
+		Robot.arm.rotateArm(-1) ;
 	}
 	
 	@Override
@@ -30,6 +30,6 @@ public class _ArmUp extends Command {
 	
 	@Override
 	protected void end() {
-		Robot.arm.moveElevator(0);
+		Robot.arm.rotateArm(0);
 	}
 }

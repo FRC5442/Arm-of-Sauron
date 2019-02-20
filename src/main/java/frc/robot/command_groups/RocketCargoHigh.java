@@ -8,16 +8,12 @@
 package frc.robot.command_groups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
 import frc.robot.commands.*;
 
-public class RocketHigh extends CommandGroup {
+public class RocketCargoHigh extends CommandGroup {
   
-  public RocketHigh() {
-    int travelDistance = 3 - Robot.currentRocketMode.getLevel();
-    addParallel(new _ElevatorUp(3.535 * Math.abs(travelDistance)));
-    addParallel(new _ArmUp(0.25));
-
-    Robot.currentRocketMode = Robot.RocketMode.HIGH;
+  public RocketCargoHigh() {
+    addParallel(new _ElevatorUp(7.6));
+    addParallel(new _ArmUp(5));
   }
 }

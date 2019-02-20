@@ -5,30 +5,22 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.command_groups;
 
-import frc.robot.Robot;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.commands.*;
 
-public class ElevatorDown extends Command {
-  public ElevatorDown() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+public class RocketHatchHigh extends CommandGroup {
+  
+  public RocketHatchHigh() {
+    if(RobotMap.encoderArm.getDistance() > 4.5) {
+      addParallel(new _ElevatorUp(7.6));
+      addParallel(new _ArmDown(4.5));
+    }
+    else {
+      addParallel(new _ElevatorUp(7.6));
+      addParallel(new _ArmUp(4.5));
+    }
   }
-
-  @Override
-	protected void execute() {
-		Robot.arm.moveElevator(-0.5) ;
-	}
-	
-	@Override
-	protected boolean isFinished() {
-		return !RobotMap.lowElevatorSwitch.get();
-	}
-	
-	@Override
-	protected void end() {
-		Robot.arm.moveElevator(0);
-	}
 }

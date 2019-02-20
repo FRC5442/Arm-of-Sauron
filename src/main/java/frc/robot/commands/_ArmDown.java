@@ -30,6 +30,6 @@ public class _ArmDown extends Command {
 	
 	@Override
 	protected void end() {
-		Robot.arm.moveElevator(0);
+		Robot.arm.rotateArm(0);
 	}
 }

@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.command_groups.*;
 import frc.robot.commands.*;
 
 /**
@@ -47,10 +48,8 @@ public class OI {
   public static Joystick xboxController2;
   public static JoystickButton xboxController1A, xboxController1B, xboxController1X, xboxController1Y;
   public static JoystickButton xboxController1LBumper, xboxController1RBumper;
-  public static JoystickButton xboxController2A, xboxController2B, xboxController2X, xboxController2Y;
-  public static JoystickButton xboxController2LBumper, xboxController2RBumper;
+  public static JoystickButton xboxController2A, xboxController2B, xboxController2X, xboxController2Y, xboxController2LBumper, xboxController2RBumper;
   public static JoystickButton xboxController2LStickBtn, xboxController2RStickBtn;
-
 
   public OI() {
     //Xbox Controller 1
@@ -70,8 +69,8 @@ public class OI {
     xboxController2Y = new JoystickButton(xboxController2, 4);
     xboxController2LBumper = new JoystickButton(xboxController2, 5);
     xboxController2RBumper = new JoystickButton(xboxController2, 6);
-    xboxController2RStickBtn = new JoystickButton(xboxController2, 10);
     xboxController2LStickBtn = new JoystickButton(xboxController2, 9);
+    xboxController2RStickBtn = new JoystickButton(xboxController2, 10);
 
     //Xbox Controller 1
     //xboxController1RBumper.whileHeld(new ScrewFrontCom(0.5)); //+ means bring front or back up
@@ -81,8 +80,8 @@ public class OI {
 
     xboxController1A.whileHeld(new ScrewFrontCom(-0.5));
     xboxController1B.whileHeld(new ScrewFrontCom(0.5));
-    xboxController1X.whileHeld(new ScrewBackCom(-0.5));
-    xboxController1Y.whileHeld(new ScrewBackCom(0.5));
+    xboxController1X.whileHeld(new ToggleCompressor());
+    xboxController1Y.whileHeld(new ElevatorDown());
 
     xboxController1LBumper.whileHeld(new ClimbDrive(-0.5));
     xboxController1RBumper.whileHeld(new ClimbDrive(0.5));
@@ -92,15 +91,21 @@ public class OI {
     //Xbox Controller 2
     xboxController2LBumper.whenPressed(new ToggleChopstickSolenoid());
     xboxController2RBumper.whenPressed(new ToggleWristSolenoid());
-
+/*
     xboxController2A.whileHeld(new ElevatorUp());
     xboxController2B.whileHeld(new ElevatorDown());
 
     xboxController2X.whileHeld(new WristUp());
     xboxController2Y.whileHeld(new WristDown());
-
+*/
     xboxController2LStickBtn.whileHeld(new ArmUp());
-    xboxController2RStickBtn.whileHeld(new ArmDown());    
+    xboxController2RStickBtn.whileHeld(new ArmDown()); 
+    
+    xboxController2X.whenPressed(new RocketHeightToggle());
+    xboxController2Y.whenPressed(new RocketHighToggle());
+    xboxController2B.whenPressed(new RocketMiddleToggle());
+    xboxController2A.whenPressed(new RocketLowToggle());
   }
+  
 
 }

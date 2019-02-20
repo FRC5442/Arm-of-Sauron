@@ -33,23 +33,7 @@ public class Robot extends TimedRobot {
 
   public static boolean hatchMode;
 
-  public static enum RocketMode {
-    LOW(1),
-    MIDDLE(2),
-    HIGH(3);
 
-    private int level = 1;
-
-    private RocketMode(int level) {
-      this.level = level;
-    }
-
-    public int getLevel() {
-      return level;
-    }
-  }
-
-  public static RocketMode currentRocketMode;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -58,21 +42,16 @@ public class Robot extends TimedRobot {
     hatchMode = !hatchMode;
   }
 
-  public static boolean isHatchMode() {
-    return hatchMode;
-  }
-
   @Override
   public void robotInit() {
-    m_oi = new OI();
     robotMap = new RobotMap();
+    m_oi = new OI();
     arm = new Arm();
     pneumatics = new Pneumatics();
     driveTrain = new DriveTrain();
     corkScrew = new CorkScrew();
 
     hatchMode = true;
-    currentRocketMode = RocketMode.LOW;
 
     SmartDashboard.putData("Auto mode", m_chooser);
   }
@@ -141,7 +120,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    RobotMap.encoderVertical.reset();
+    RobotMap.encoderScrewBack.reset();
+    RobotMap.encoderArm.reset();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -157,7 +137,12 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putBoolean("Hatch Mode", hatchMode);
     SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
+    SmartDashboard.putNumber("Encoder for Arm", RobotMap.encoderArm.getDistance());
+    SmartDashboard.putNumber("Encoder for ScrewBack", RobotMap.encoderScrewBack.getDistance());
+    SmartDashboard.putNumber("Encoder for Wrist", RobotMap.encoderWrist.getDistance());
+    SmartDashboard.putBoolean("Bottom Limit Switch", RobotMap.lowElevatorSwitch.get());
   }
 
   /**

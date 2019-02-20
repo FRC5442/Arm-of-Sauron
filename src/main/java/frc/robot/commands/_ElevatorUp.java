@@ -14,18 +14,18 @@ import edu.wpi.first.wpilibj.command.Command;
 public class _ElevatorUp extends Command {
 	private double enc_distance;
 
-  public _ElevatorUp(double distance) {
-		enc_distance = distance;
-  }
+	public _ElevatorUp(double distance) {
+			enc_distance = distance;
+	}
 
-  @Override
+  	@Override
 	protected void execute() {
-		Robot.arm.moveElevator(1) ;
+		Robot.arm.moveElevator(0.5) ;
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		return (Math.abs(RobotMap.encoderVertical.getDistance()) >= enc_distance);
+		return (Math.abs(RobotMap.encoderVertical.getDistance()) >= enc_distance); //|| (RobotMap.highElevatorSwitch.get());
 	}
 	
 	@Override
