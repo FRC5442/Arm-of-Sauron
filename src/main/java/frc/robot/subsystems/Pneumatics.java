@@ -34,6 +34,9 @@ public class Pneumatics extends Subsystem {
   public void toggleChopstickSolenoid(Value position) {
     RobotMap.chopstickSolenoid.set(position);
   }
+  public void toggleGearShift(Value position) {
+    RobotMap.chopstickSolenoid.set(position);
+  }
 
   public void toggleCompressor(){
     if (compressor.enabled()) {
