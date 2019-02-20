@@ -58,8 +58,8 @@ public class OI {
     xboxController1RStickBtn.whenPressed(new HighGear());
 
 //    Xbox Controller 2
-    xboxController2LBumper.whileHeld(new ClimbDrive(-0.5));
-    xboxController2RBumper.whileHeld(new ClimbDrive(0.5));
+    xboxController2LBumper.whileHeld(new ToggleWristSolenoid());
+    xboxController2RBumper.whileHeld(new ToggleChopstickSolenoid());
 /*
     xboxController2A.whileHeld(new ElevatorUp());
     xboxController2B.whileHeld(new ElevatorDown());
