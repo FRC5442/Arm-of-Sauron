@@ -143,8 +143,10 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
     SmartDashboard.putNumber("Encoder for Arm", RobotMap.encoderArm.getDistance());
     SmartDashboard.putNumber("Encoder for ScrewBack", RobotMap.encoderScrewBack.getDistance());
+    SmartDashboard.putNumber("Encoder for ScrewFront", RobotMap.encoderScrewFront.getDistance());
     SmartDashboard.putNumber("Encoder for Wrist", RobotMap.encoderWrist.getDistance());
     SmartDashboard.putBoolean("Bottom Limit Switch", RobotMap.lowElevatorSwitch.get());
+    SmartDashboard.putBoolean("Top Limit Switch", RobotMap.highElevatorSwitch.get());
   }
 
   /**

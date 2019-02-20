@@ -25,7 +25,7 @@ public class _ElevatorUp extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-		return (Math.abs(RobotMap.encoderVertical.getDistance()) >= enc_distance); //|| (RobotMap.highElevatorSwitch.get());
+		return (Math.abs(RobotMap.encoderVertical.getDistance()) >= enc_distance) || (!RobotMap.highElevatorSwitch.get());
 	}
 	
 	@Override

@@ -38,7 +38,7 @@ public class RobotMap {
   
   public static SpeedControllerGroup leftMotorControllers, rightMotorControllers, corkMotorControllers;
   
-  public static Encoder encoderArm, encoderVertical, encoderWrist, encoderScrewBack;
+  public static Encoder encoderArm, encoderVertical, encoderWrist, encoderScrewBack, encoderScrewFront;
   public static DigitalInput lowElevatorSwitch, highElevatorSwitch;
   public static AHRS navx;
 
@@ -77,11 +77,14 @@ public class RobotMap {
     encoderScrewBack = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
     encoderWrist.setSamplesToAverage(5);
     encoderWrist.setDistancePerPulse(1.0/360);
+    encoderScrewFront = new Encoder(8, 9, false, Encoder.EncodingType.k4X);
+    encoderWrist.setSamplesToAverage(5);
+    encoderWrist.setDistancePerPulse(1.0/360);
     
 		navx = new AHRS(SerialPort.Port.kMXP);
 
-    lowElevatorSwitch = new DigitalInput(8);
-    //highElevatorSwitch = new DigitalInput(11);
+    lowElevatorSwitch = new DigitalInput(11);
+    highElevatorSwitch = new DigitalInput(10);
 
     leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
     rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
