@@ -59,12 +59,12 @@ public class RobotMap {
     rightController3 = new WPI_VictorSPX(9);
     corkControllerFront = new WPI_VictorSPX(2);
     corkControllerBack = new WPI_VictorSPX(3);
-    climbWheel = new WPI_VictorSPX(4);
+    climbWheel = new WPI_VictorSPX(1);
     verticalController = new WPI_VictorSPX(0);
     wristController = new WPI_VictorSPX(4);
-    armController = new WPI_VictorSPX(5);
+    armController = new WPI_VictorSPX(6);
 
-   
+
     encoderVertical = new Encoder(6, 7 ,true, Encoder.EncodingType.k4X);
     encoderVertical.setSamplesToAverage(5);
 		encoderVertical.setDistancePerPulse(1.0/360);
@@ -80,11 +80,11 @@ public class RobotMap {
     encoderScrewFront = new Encoder(8, 9, false, Encoder.EncodingType.k4X);
     encoderWrist.setSamplesToAverage(5);
     encoderWrist.setDistancePerPulse(1.0/360);
-    
+
 		navx = new AHRS(SerialPort.Port.kMXP);
 
-    lowElevatorSwitch = new DigitalInput(11);
-    highElevatorSwitch = new DigitalInput(10);
+    lowElevatorSwitch = new DigitalInput(10);
+    highElevatorSwitch = new DigitalInput(11);
 
     leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
     rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);

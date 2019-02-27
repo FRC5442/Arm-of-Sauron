@@ -11,7 +11,7 @@ public class ArmUp extends Command {
 	
 	@Override
 	protected void execute() {
-		Robot.arm.rotateArm(1) ;
+		Robot.arm.rotateArm(-1) ;
 	}
 	
 	@Override

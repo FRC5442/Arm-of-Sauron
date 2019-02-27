@@ -52,7 +52,12 @@ public class OI {
 
 //    Xbox Controller 1
     xboxController1X.whenPressed(new ToggleCompressor());
+    xboxController1A.whileHeld(new ArmUp());
+    xboxController1B.whileHeld(new ArmDown());
     //xboxController1Y.whileHeld(new ElevatorDown());
+    xboxController1RBumper.whileHeld(new ClimbDrive(0.6));
+    xboxController1LBumper.whileHeld(new ClimbDrive(-0.6));
+
 
     xboxController1LStickBtn.whenPressed(new LowGear());
     xboxController1RStickBtn.whenPressed(new HighGear());
@@ -60,23 +65,23 @@ public class OI {
 //    Xbox Controller 2
     xboxController2LBumper.whenPressed(new ToggleWristSolenoid());
     xboxController2RBumper.whenPressed(new ToggleChopstickSolenoid());
-/*
+
     xboxController2A.whileHeld(new ElevatorUp());
     xboxController2B.whileHeld(new ElevatorDown());
-
     xboxController2X.whileHeld(new WristUp());
     xboxController2Y.whileHeld(new WristDown());
 
-    xboxController2LStickBtn.whileHeld(new ArmUp());
-    xboxController2RStickBtn.whileHeld(new ArmDown()); 
-*/
+   // xboxController2LStickBtn.whileHeld(new ArmUp());
+   // xboxController2RStickBtn.whileHeld(new ArmDown()); 
     
     xboxController2Start.whenPressed(new ClimbExecutable());
 
+    /*
     xboxController2X.whenPressed(new RocketHeightToggle());
     xboxController2Y.whenPressed(new RocketHighToggle());
     xboxController2B.whenPressed(new RocketMiddleToggle());
     xboxController2A.whenPressed(new RocketLowToggle());
+    */
   }
 
 }

@@ -139,6 +139,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+
     SmartDashboard.putBoolean("Hatch Mode", hatchMode);
     SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
     SmartDashboard.putNumber("Encoder for Arm", RobotMap.encoderArm.getDistance());
