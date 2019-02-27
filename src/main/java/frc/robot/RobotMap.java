@@ -8,6 +8,7 @@
 package frc.robot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.networktables.*;
 
@@ -81,6 +82,9 @@ public class RobotMap {
 
     compressor = new Compressor();
     gearShift = new DoubleSolenoid(0, 1);
+
+    inst = NetworkTableInstance.getDefault();
+		table = inst.getTable("/vision");
     wristSolenoid = new DoubleSolenoid(4,5);
     chopstickSolenoid = new DoubleSolenoid(2,3);
   }

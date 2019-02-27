@@ -33,24 +33,6 @@ public class Robot extends TimedRobot {
 
   public static boolean hatchMode;
 
-  public static enum RocketMode {
-    LOW(1),
-    MIDDLE(2),
-    HIGH(3);
-
-    private int level = 1;
-
-    private RocketMode(int level) {
-      this.level = level;
-    }
-
-    public int getLevel() {
-      return level;
-    }
-  }
-
-  public static RocketMode currentRocketMode;
-
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -72,7 +54,6 @@ public class Robot extends TimedRobot {
     corkScrew = new CorkScrew();
 
     hatchMode = true;
-    currentRocketMode = RocketMode.LOW;
 
     SmartDashboard.putData("Auto mode", m_chooser);
   }

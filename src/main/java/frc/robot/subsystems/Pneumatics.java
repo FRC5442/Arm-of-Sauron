@@ -28,6 +28,10 @@ public class Pneumatics extends Subsystem {
     compressor = RobotMap.compressor;
   }
 
+  public void driveGearShift(Value position) {
+    gearShift.set(position);
+  }
+  
   public void toggleWristSolenoid(Value position) {
     RobotMap.wristSolenoid.set(position);
   }
