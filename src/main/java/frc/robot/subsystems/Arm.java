@@ -9,21 +9,26 @@ package frc.robot.subsystems;
 
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 /**
  * Add your docs here.
  */
-public class Arm extends Subsystem {
+public class Arm extends PIDSubsystem {
   public static boolean heightToggle;
+  public static double armThreshold;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
   public Arm() {
+    super(1, 1, 1);
     heightToggle = true;
+    armThreshold = 0;
   }
 
   public void rotateArm(double speed) {
-		RobotMap.armController.set(.4*speed);
+    RobotMap.armController.set(.4*speed);
+    armThreshold = RobotMap.encoderArm.getDistance();
   }
   
   public void moveElevator(double speed) {
@@ -41,6 +46,15 @@ public class Arm extends Subsystem {
   public boolean getHeight() {
     return heightToggle;
   }
+
+  public void usePIDOutput(double output) {
+    RobotMap.armController.set(output);
+  }
+
+  public double returnPIDInput() {
+    return armThreshold;  
+  }
+
   @Override
   public void initDefaultCommand() {
  //   setDefaultCommand(new ArmExecutable());
