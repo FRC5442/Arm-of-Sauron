@@ -73,10 +73,12 @@ public class OI {
     
     xboxController2Start.whenPressed(new ClimbExecutable());
 
-    xboxController2X.whenPressed(new RocketHeightToggle());
-    xboxController2Y.whenPressed(new RocketHighToggle());
-    xboxController2B.whenPressed(new RocketMiddleToggle());
-    xboxController2A.whenPressed(new RocketLowToggle());
+    xboxController2X.whileHeld(new ElevatorDown());
+    xboxController2Y.whileHeld(new ElevatorUp());
+    xboxController2B.whileHeld(new ArmUp());
+    xboxController2A.whileHeld(new ArmDown());
+    xboxController2LStickBtn.whileHeld(new WristDown());
+    xboxController2RStickBtn.whileHeld(new WristUp());
   }
 
 }

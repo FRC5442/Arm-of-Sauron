@@ -32,6 +32,8 @@ public class Robot extends TimedRobot {
   public static Arm arm;
   public static Pneumatics pneumatics;
 
+  public static ArmPID armPID;
+
   public static boolean hatchMode;
 
   Command m_autonomousCommand;
@@ -45,6 +47,8 @@ public class Robot extends TimedRobot {
     pneumatics = new Pneumatics();
     driveTrain = new DriveTrain();
     corkScrew = new CorkScrew();
+
+    armPID = new ArmPID();
 
     SmartDashboard.putData("Auto mode", m_chooser);
   }
@@ -130,7 +134,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    armPID.start();
+
     Scheduler.getInstance().run();
+   // SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(7));
     SmartDashboard.putBoolean("Hatch Mode", arm.heightToggle);
     SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
     SmartDashboard.putNumber("Encoder for Arm", RobotMap.encoderArm.getDistance());
