@@ -50,6 +50,7 @@ public class OI {
   public static JoystickButton xboxController2A, xboxController2B, xboxController2X, xboxController2Y;
   public static JoystickButton xboxController2LBumper, xboxController2RBumper;
   public static JoystickButton xboxController2LStickBtn, xboxController2RStickBtn;
+  public static JoystickButton xboxController1LStickBtn, xboxController1RStickBtn;
 
 
   public OI() {
@@ -61,6 +62,9 @@ public class OI {
     xboxController1Y = new JoystickButton(xboxController1, 4);
     xboxController1LBumper = new JoystickButton(xboxController1, 5);
     xboxController1RBumper = new JoystickButton(xboxController1, 6);
+    xboxController1RStickBtn = new JoystickButton(xboxController1, 10);
+    xboxController1LStickBtn = new JoystickButton(xboxController1, 9);
+
 
     //Xbox Controller 2
     xboxController2 = new Joystick(1);
@@ -86,6 +90,8 @@ public class OI {
 
     xboxController1LBumper.whileHeld(new ClimbDrive(-0.5));
     xboxController1RBumper.whileHeld(new ClimbDrive(0.5));
+    xboxController1RStickBtn.whenPressed(new ToggleCompressor());    
+    xboxController1LStickBtn.whenPressed(new GearShift());
 
 //    xboxController1X.whenPressed(new ToggleCompressor());
 
