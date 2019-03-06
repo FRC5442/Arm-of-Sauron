@@ -50,6 +50,8 @@ public class Robot extends TimedRobot {
 
     armPID = new ArmPID();
 
+    RobotMap.encoderArm.reset();
+
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 
@@ -119,7 +121,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     RobotMap.encoderScrewBack.reset();
-    RobotMap.encoderArm.reset();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -134,7 +135,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    armPID.start();
+    if (!armPID.isRunning()) armPID.start();
 
     Scheduler.getInstance().run();
    // SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(7));

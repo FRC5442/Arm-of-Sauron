@@ -13,7 +13,7 @@ import frc.robot.*;
 
 public class ArmPID extends PIDCommand {
   public ArmPID() {
-    super(7, 0.05, 0.001);
+    super(0.5, 10.0, 0);
     
     //requires(Robot.arm);
   }
@@ -33,7 +33,7 @@ public class ArmPID extends PIDCommand {
 
   @Override
   public void usePIDOutput(double output) {
-    RobotMap.armController.set(output * 2);
+    RobotMap.armController.set(-output);
     SmartDashboard.putNumber("PID Output", output);
   }
 
@@ -45,7 +45,7 @@ public class ArmPID extends PIDCommand {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return ((Math.abs(RobotMap.encoderArm.getDistance() - Robot.arm.armThreshold)) >= 0.05);
+    return ((Math.abs(Robot.arm.armThreshold - RobotMap.encoderArm.getDistance())) <= 0.01);
   }
 
   // Called once after isFinished returns true
