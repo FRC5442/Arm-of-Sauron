@@ -13,7 +13,18 @@ import frc.robot.*;
 
 public class ArmPID extends PIDCommand {
   public ArmPID() {
-    super(0.5, 10.0, 0);
+    super(0.5, 0.004, 0.001);
+
+    /* How P,I, and D values are calculated
+      P = (1.2 * t) / (K * d)
+      I = (2.0 * d)
+      D = (0.5 * d)
+
+      Where:
+        d = dead time
+        K = constant
+        t = time
+    */
     
     //requires(Robot.arm);
   }
