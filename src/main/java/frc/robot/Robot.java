@@ -33,6 +33,7 @@ public class Robot extends TimedRobot {
   public static Pneumatics pneumatics;
 
   public static ArmPID armPID;
+  public static WristPID wristPID;
 
   public static boolean hatchMode;
 
@@ -49,6 +50,7 @@ public class Robot extends TimedRobot {
     corkScrew = new CorkScrew();
 
     armPID = new ArmPID();
+    wristPID = new WristPID();
 
     RobotMap.encoderArm.reset();
 
@@ -136,6 +138,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     if (!armPID.isRunning()) armPID.start();
+    if (!wristPID.isRunning()) wristPID.start();
 
     Scheduler.getInstance().run();
    // SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(7));

@@ -53,8 +53,8 @@ public class OI {
 //    Xbox Controller 1
     xboxController1X.whenPressed(new ToggleCompressor());
     //xboxController1Y.whileHeld(new ElevatorDown());
-    xboxController1LBumper.whileHeld(new ClimbDrive(0.75));
-    xboxController1RBumper.whileHeld(new ClimbDrive(-0.75));
+    xboxController1LBumper.whileHeld(new ClimbDrive(1));
+    xboxController1RBumper.whileHeld(new ClimbDrive(-1));
 
     xboxController1LStickBtn.whenPressed(new LowGear());
     xboxController1RStickBtn.whenPressed(new HighGear());

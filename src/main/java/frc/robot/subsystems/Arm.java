@@ -17,16 +17,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Arm extends Subsystem {
   public static boolean heightToggle;
   public static double armThreshold;
+  public static double wristThreshold;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
   public Arm() {
     heightToggle = true;
     armThreshold = 0;
+    wristThreshold = 0;
   }
 
   public void rotateArm(double speed) {
-    RobotMap.armController.set(.4*speed);
+    RobotMap.armController.set(.8*speed);
     armThreshold = RobotMap.encoderArm.getDistance();
   }
   
@@ -35,7 +37,8 @@ public class Arm extends Subsystem {
   }
 
   public void rotateWrist(double speed) {
-    RobotMap.wristController.set(.4*speed);
+    RobotMap.wristController.set(1*speed);
+    wristThreshold = RobotMap.encoderWrist.getDistance();
   }
 
   public void SwitchHeight() {
