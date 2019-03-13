@@ -16,14 +16,14 @@ public class WristPID extends PIDCommand {
     super(0.5, 0.004, 0.001);
 
     /* How P,I, and D values are calculated
-      P = (1.2 * t) / (K * d)
+      P = (1.2 * T) / (K * d)
       I = (2.0 * d)
       D = (0.5 * d)
 
       Where:
-        d = dead time
-        K = constant
-        t = time
+        d = dead time - how long the PID loop takes to react to a change
+        K = constant (process variable) - how drastically the loop responds to a change
+        T = time constant - duration of the loop's reaction
     */
   }
 
