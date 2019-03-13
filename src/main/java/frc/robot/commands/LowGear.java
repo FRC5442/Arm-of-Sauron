@@ -7,30 +7,25 @@
 
 package frc.robot.commands;
 
-import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
-public class ScrewUp extends Command {
-
-  double speed;
-
-  public ScrewUp(double speed) {
-    this.speed = speed;
-
+public class LowGear extends Command {
+  public LowGear() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
-    Robot.corkScrew.ScrewOn(speed);
-
+    Robot.pneumatics.toggleGearShift(DoubleSolenoid.Value.kReverse);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
   }
 
   // Make this return true when this Command no longer needs to run execute()

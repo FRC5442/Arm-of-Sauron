@@ -16,7 +16,6 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class DriveTrain extends Subsystem {
-
   public static DifferentialDrive driveTrain;
   public static boolean driveMode;
   public static double course_correction;

@@ -12,8 +12,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.CorkScrew;
+import frc.robot.subsystems.*;
+import frc.robot.commands.*;
+import frc.robot.subsystems.Arm;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,25 +23,37 @@ import frc.robot.subsystems.CorkScrew;
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
+
 public class Robot extends TimedRobot {
-  public static RobotMap robotMap;
   public static OI m_oi;
+  public static RobotMap robotMap;
   public static DriveTrain driveTrain;
   public static CorkScrew corkScrew;
+  public static Arm arm;
+  public static Pneumatics pneumatics;
+
+  public static ArmPID armPID;
+  public static WristPID wristPID;
+
+  public static boolean hatchMode;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-  /**
-   * This function is run when the robot is first started up and should be
-   * used for any initialization code.
-   */
   @Override
   public void robotInit() {
-    m_oi = new OI();
     robotMap = new RobotMap();
-   // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    // chooser.addOption("My Auto", new MyAutoCommand());
+    m_oi = new OI();
+    arm = new Arm();
+    pneumatics = new Pneumatics();
+    driveTrain = new DriveTrain();
+    corkScrew = new CorkScrew();
+
+    armPID = new ArmPID();
+    wristPID = new WristPID();
+
+    RobotMap.encoderArm.reset();
+
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 
@@ -54,6 +67,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    
   }
 
   /**
@@ -108,6 +122,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    RobotMap.encoderScrewBack.reset();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -115,8 +130,6 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-
-    driveTrain = new DriveTrain();
   }
 
   /**
@@ -124,7 +137,17 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    if (!armPID.isRunning()) armPID.start();
+    if (!wristPID.isRunning()) wristPID.start();
+
     Scheduler.getInstance().run();
+   // SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(7));
+    SmartDashboard.putBoolean("Hatch Mode", arm.heightToggle);
+    SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
+    SmartDashboard.putNumber("Encoder for Arm", RobotMap.encoderArm.getDistance());
+    SmartDashboard.putNumber("Encoder for ScrewBack", RobotMap.encoderScrewBack.getDistance());
+    SmartDashboard.putNumber("Encoder for Wrist", RobotMap.encoderWrist.getDistance());
+    SmartDashboard.putBoolean("Bottom Limit Switch", RobotMap.lowElevatorSwitch.get());
   }
 
   /**
@@ -137,4 +160,7 @@ public class Robot extends TimedRobot {
   public static void SwitchDriveMode() {
 		driveTrain.SwitchDriveMode();
 	}
+  public static void switchHeight() {
+    arm.SwitchHeight();
+  }
 }

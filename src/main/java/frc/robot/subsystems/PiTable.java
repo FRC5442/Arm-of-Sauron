@@ -21,5 +21,4 @@ public class PiTable extends Subsystem{
 	protected void initDefaultCommand() {
 		
 	}
-
 }

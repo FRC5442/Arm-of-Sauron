@@ -8,7 +8,6 @@
 package frc.robot.subsystems;
 
 import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -19,14 +18,19 @@ public class CorkScrew extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  SpeedControllerGroup corkGroup;
-
   public CorkScrew() {
-    corkGroup = RobotMap.corkMotorControllers;
   }
 
-  public void ScrewOn(double speed){
-    corkGroup.set(speed);
+  public void ScrewFront(double speedFront){
+    RobotMap.corkControllerFront.set(speedFront);
+  }
+
+  public void ScrewBack(double speedBack){
+    RobotMap.corkControllerBack.set(speedBack);
+  }
+
+  public void moveWheel(double speed){
+    RobotMap.climbWheel.set(speed);
   }
 
 
