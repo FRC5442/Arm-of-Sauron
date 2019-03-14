@@ -79,8 +79,8 @@ public class OI {
     xboxController2Y.whileHeld(new ElevatorUp());
     xboxController2B.whileHeld(new ArmUp());
     xboxController2A.whileHeld(new ArmDown());
-    xboxController2LStickBtn.whileHeld(new WristDown());
-    xboxController2RStickBtn.whileHeld(new WristUp());
+    xboxController2RStickBtn.whileHeld(new WristDown());
+    xboxController2LStickBtn.whileHeld(new WristUp());
   }
 
 }
