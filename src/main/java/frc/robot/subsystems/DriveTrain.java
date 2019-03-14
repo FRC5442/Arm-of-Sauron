@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.commands.TankDrive;
 import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Add your docs here.
@@ -26,17 +27,17 @@ public class DriveTrain extends Subsystem {
   public DriveTrain() {
     driveTrain = RobotMap.driveTrain;
     driveMode = true;
-    m_speed = 0.5;
   }
 
   public static void drive(double leftSpeed, double rightSpeed) {
     course_correction = PiTable.getX();
-    m_speed = -course_correction;
+    SmartDashboard.putNumber("Encoder for Wrist", course_correction);
+    m_speed = 0.5;
     if(driveMode) {
       driveTrain.tankDrive(leftSpeed, rightSpeed);
     }
     else{
-      driveTrain.tankDrive(course_correction, m_speed);
+      driveTrain.curvatureDrive(0.25, course_correction, false);
     }
   }
  

@@ -95,6 +95,9 @@ public class RobotMap {
     gearShift = new DoubleSolenoid(2, 3);
     wristSolenoid = new DoubleSolenoid(0,1);
     chopstickSolenoid = new DoubleSolenoid(4,5);
+
+    inst = NetworkTableInstance.getDefault();
+    table = inst.getTable("/vision");
   }
 
 }
