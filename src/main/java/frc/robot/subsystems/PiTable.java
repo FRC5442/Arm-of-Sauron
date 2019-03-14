@@ -6,14 +6,19 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.networktables.*;
 
 public class PiTable extends Subsystem{
-    static NetworkTableEntry entry;
+	static NetworkTableEntry entry1;
+	static NetworkTableEntry entry2;
 	static NetworkTable piTable = RobotMap.table;
-    static double X;
+	static double X;
+	static double X1;
+	static double X2;
 	
 	public static double getX(){
-		entry = piTable.getEntry("course_correction");
-		X = entry.getDouble(0);
-		System.out.println(X);
+		entry1 = piTable.getEntry("course_correction");
+		entry2 = piTable.getEntry("course_correction");
+		X1 = entry1.getDouble(0);
+		X2 = entry1.getDouble(0);
+		X = (X2 + X1) % 2;
 		return X;
 	}
 	

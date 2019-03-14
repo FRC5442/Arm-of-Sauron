@@ -31,14 +31,12 @@ public class DriveTrain extends Subsystem {
 
   public static void drive(double leftSpeed, double rightSpeed) {
     course_correction = PiTable.getX();
+    m_speed = -course_correction;
     if(driveMode) {
       driveTrain.tankDrive(leftSpeed, rightSpeed);
     }
     else{
-      if(course_correction < 0.05 && course_correction > -0.05){
-        course_correction = -m_speed;
-      }
-      driveTrain.tankDrive(-course_correction, m_speed);
+      driveTrain.tankDrive(course_correction, m_speed);
     }
   }
  
