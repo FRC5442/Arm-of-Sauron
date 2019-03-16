@@ -52,6 +52,6 @@ public class Arm extends Subsystem {
   @Override
   public void initDefaultCommand() {
     //setDefaultCommand(new ArmPID());
-    //setDefaultCommand(new RocketExecutable());
+    setDefaultCommand(new RocketExecutable());
   }
 }

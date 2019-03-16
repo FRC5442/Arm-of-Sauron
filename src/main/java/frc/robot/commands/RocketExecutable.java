@@ -17,12 +17,12 @@ public class RocketExecutable extends Command {
   CommandGroup hatchLow, hatchMiddle, hatchHigh, cargoLow, cargoMiddle, cargoHigh;
   public RocketExecutable() {
     toggle = true;
-    hatchLow = new CommandGroup();
-    hatchMiddle = new CommandGroup();
-    hatchHigh = new CommandGroup();
-    cargoLow = new CommandGroup();
-    cargoMiddle = new CommandGroup();
-    cargoHigh = new CommandGroup();
+    hatchLow = new RocketHatchLow();
+    hatchMiddle = new RocketHatchMiddle();
+    hatchHigh = new RocketHatchHigh();
+    cargoLow = new RocketCargoLow();
+    cargoMiddle = new RocketCargoMiddle();
+    cargoHigh = new RocketCargoHigh();
     requires(Robot.arm);
   }
 
@@ -35,25 +35,57 @@ public class RocketExecutable extends Command {
   @Override
   protected void execute() {
     if (Robot.arm.heightToggle) {
-      if (OI.getAButton()) {
+      if (OI.getAButton() && !hatchLow.isRunning()) {
+        hatchMiddle.cancel();
+        hatchHigh.cancel();
+        cargoLow.cancel();
+        cargoMiddle.cancel();
+        cargoHigh.cancel();
         hatchLow.start();
-        hatchMiddle.cancel();
-        hatchHigh.cancel();
       }
-      else if (OI.getBButton()) {
+      else if (OI.getBButton() && !hatchMiddle.isRunning()) {
+        hatchLow.cancel();
+        hatchHigh.cancel();
+        cargoLow.cancel();
+        cargoMiddle.cancel();
+        cargoHigh.cancel();
         hatchMiddle.start();
-        hatchLow.cancel();
-        hatchHigh.cancel();
       }
-      else if (OI.getYButton()) {
-        hatchHigh.start();
+      else if (OI.getYButton()  && !hatchHigh.isRunning()) {
         hatchLow.cancel();
         hatchMiddle.cancel();
+        cargoLow.cancel();
+        cargoMiddle.cancel();
+        cargoHigh.cancel();
+        hatchHigh.start();
       }
     }
     
-    if (!Robot.arm.heightToggle) {
-      
+    if (!Robot.arm.heightToggle  && !cargoLow.isRunning()) {
+      if (OI.getAButton()) {
+        cargoMiddle.cancel();
+        cargoHigh.cancel();
+        hatchHigh.cancel();
+        hatchLow.cancel();
+        hatchMiddle.cancel();
+        cargoLow.start();
+      }
+      else if (OI.getBButton() && !cargoMiddle.isRunning()) {
+        cargoLow.cancel();
+        cargoHigh.cancel();
+        hatchHigh.cancel();
+        hatchLow.cancel();
+        hatchMiddle.cancel();
+        cargoMiddle.start();
+      }
+      else if (OI.getYButton() && !cargoHigh.isRunning()) {
+        cargoLow.cancel();
+        cargoMiddle.cancel();
+        hatchHigh.cancel();
+        hatchLow.cancel();
+        hatchMiddle.cancel();
+        cargoHigh.start();
+      }
     }
   }
 
