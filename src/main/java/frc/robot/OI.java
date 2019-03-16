@@ -51,6 +51,7 @@ public class OI {
     xboxController2RStickBtn = new JoystickButton(xboxController2, 10);
 
 //    Xbox Controller 1
+
     xboxController1X.whenPressed(new ToggleCompressor());
     //xboxController1Y.whileHeld(new ElevatorDown());
     xboxController1LBumper.whileHeld(new ClimbDrive(1));
@@ -77,6 +78,20 @@ public class OI {
     xboxController2X.whenPressed(new RocketHeightToggle());
     xboxController2RStickBtn.whileHeld(new WristDown());
     xboxController2LStickBtn.whileHeld(new WristUp());
+
+    xboxController2A.whenPressed(new RocketHatchLow());
+    xboxController2B.whenPressed(new RocketHatchMiddle());
+    xboxController2Y.whenPressed(new RocketHatchHigh());
   }
 
+
+  public static boolean getAButton() {
+    return xboxController2.getRawButton(1);
+  }
+  public static boolean getBButton() {
+    return xboxController2.getRawButton(2);
+  }
+  public static boolean getYButton() {
+    return xboxController2.getRawButton(4);
+  }
 }

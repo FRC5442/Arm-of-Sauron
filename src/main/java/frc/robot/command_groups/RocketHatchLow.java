@@ -13,7 +13,7 @@ import frc.robot.commands.*;
 public class RocketHatchLow extends CommandGroup {
   
   public RocketHatchLow() {
-//    addParallel(new _ArmDown(0.1));
-    addParallel(new _ElevatorDown(0.1));
+    addParallel(new _ArmDown(0.5));
+    //addParallel(new _ElevatorDown(0.1));
   }
 }

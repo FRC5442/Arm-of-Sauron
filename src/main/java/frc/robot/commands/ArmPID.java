@@ -44,7 +44,8 @@ public class ArmPID extends PIDCommand {
 
   @Override
   public void usePIDOutput(double output) {
-    RobotMap.armController.set(-output);
+    if (RobotMap.encoderArm.getDistance() < 0) RobotMap.armController.set(0);
+    else RobotMap.armController.set(-output);
     SmartDashboard.putNumber("PID Output", output);
   }
 
@@ -56,7 +57,7 @@ public class ArmPID extends PIDCommand {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return ((Math.abs(Robot.arm.armThreshold - RobotMap.encoderArm.getDistance())) <= 0.01);
+    return ((Math.abs(Robot.arm.armThreshold - RobotMap.encoderArm.getDistance())) <= 0.01) || (RobotMap.encoderArm.getDistance() <= 0);
   }
 
   // Called once after isFinished returns true

@@ -28,7 +28,7 @@ public class Arm extends Subsystem {
   }
 
   public void rotateArm(double speed) {
-    RobotMap.armController.set(speed);
+    RobotMap.armController.set(-speed);
     armThreshold = RobotMap.encoderArm.getDistance();
   }
   
@@ -52,6 +52,6 @@ public class Arm extends Subsystem {
   @Override
   public void initDefaultCommand() {
     //setDefaultCommand(new ArmPID());
-    setDefaultCommand(new RocketExecutable());
+    //setDefaultCommand(new RocketExecutable());
   }
 }

@@ -35,34 +35,25 @@ public class RocketExecutable extends Command {
   @Override
   protected void execute() {
     if (Robot.arm.heightToggle) {
-     // hatchLow.start();
-     OI.xboxController2A.whenPressed(hatchLow); 
-     System.out.println("hatchLow");
+      if (OI.getAButton()) {
+        hatchLow.start();
+        hatchMiddle.cancel();
+        hatchHigh.cancel();
+      }
+      else if (OI.getBButton()) {
+        hatchMiddle.start();
+        hatchLow.cancel();
+        hatchHigh.cancel();
+      }
+      else if (OI.getYButton()) {
+        hatchHigh.start();
+        hatchLow.cancel();
+        hatchMiddle.cancel();
+      }
     }
-    else if (Robot.arm.heightToggle) {
-      //OI.xboxController2B.whenPressed(hatchMiddle);
-      //hatchMiddle.start();
-      System.out.println("hatchMiddle");
-    }
-    else if (Robot.arm.heightToggle) {
-    //  OI.xboxController2Y.whenPressed(hatchHigh);
-      //hatchHigh.start();
-      System.out.println("hatchHigh");
-    }
-    else if (!Robot.arm.heightToggle) {
-      //OI.xboxController2Y.whenPressed(cargoLow);
-      //cargoLow.start();
-      System.out.println("cargoLow");
-    }
-    else if (!Robot.arm.heightToggle) {
-      //OI.xboxController2B.whenPressed(cargoMiddle);
-      //cargoMiddle.start();
-      System.out.println("cargoMiddle");
-    }
-    else if (!Robot.arm.heightToggle) {
-      //OI.xboxController2Y.whenPressed(cargoHigh);
-      //cargoHigh.start();
-      System.out.println("cargoHigh");
+    
+    if (!Robot.arm.heightToggle) {
+      
     }
   }
 
