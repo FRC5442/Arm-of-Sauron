@@ -63,6 +63,7 @@ public class OI {
 //    Xbox Controller 2
     xboxController2LBumper.whenPressed(new ToggleWristSolenoid());
     xboxController2RBumper.whenPressed(new ToggleChopstickSolenoid());
+    xboxController2Start.whenPressed(new ToggleAutomation());
 /*
     xboxController2A.whileHeld(new ElevatorUp());
     xboxController2B.whileHeld(new ElevatorDown());
@@ -89,5 +90,8 @@ public class OI {
   }
   public static boolean getYButton() {
     return xboxController2.getRawButton(4);
+  }
+  public static boolean getXButton() {
+    return xboxController2.getRawButton(3);
   }
 }

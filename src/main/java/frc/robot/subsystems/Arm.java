@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class Arm extends Subsystem {
+  public static boolean automationToggle;
   public static boolean heightToggle;
   public static double armThreshold;
   public static double wristThreshold;
@@ -22,6 +23,7 @@ public class Arm extends Subsystem {
   // here. Call these from Commands.
 
   public Arm() {
+    automationToggle = true;
     heightToggle = true;
     armThreshold = 0;
     wristThreshold = 0;
@@ -43,11 +45,11 @@ public class Arm extends Subsystem {
 
   public void SwitchHeight() {
 		heightToggle = !heightToggle;
-	}
-
-  public boolean getHeight() {
-    return heightToggle;
   }
+  
+  public void SwitchAutomation() {
+		automationToggle = !automationToggle;
+	}
 
   @Override
   public void initDefaultCommand() {

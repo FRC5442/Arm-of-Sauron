@@ -123,8 +123,11 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     arm.armThreshold = 0;
+    arm.wristThreshold = 0;
     RobotMap.encoderScrewBack.reset();
     RobotMap.encoderArm.reset();
+    RobotMap.encoderWrist.reset();
+    RobotMap.encoderVertical.reset();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -145,6 +148,7 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
    // SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(7));
     SmartDashboard.putBoolean("Hatch Mode", arm.heightToggle);
+    SmartDashboard.putBoolean("Auto Mode", arm.automationToggle);
     SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
     SmartDashboard.putNumber("Encoder for Arm", RobotMap.encoderArm.getDistance());
     SmartDashboard.putNumber("Encoder for ScrewBack", RobotMap.encoderScrewBack.getDistance());
@@ -161,5 +165,9 @@ public class Robot extends TimedRobot {
 
   public static void switchHeight() {
     arm.SwitchHeight();
+  }
+
+  public static void switchAutonomous() {
+    arm.SwitchAutomation();
   }
 }

@@ -14,13 +14,12 @@ import frc.robot.commands.*;
 public class RocketCargoMiddle extends CommandGroup {
   
   public RocketCargoMiddle() {
-    addParallel(new _ElevatorUp(7.6));
-
     if(RobotMap.encoderArm.getDistance() > 4.51) {
-      addParallel(new _ArmDown(4.5));
+      //addParallel(new _ElevatorDown(7.6));
+      addParallel(new _ArmDown(4));
     }
     else{
-      addParallel(new _ArmUp(4.5));
+      addParallel(new _ArmUp(4));
     }
   }
 }

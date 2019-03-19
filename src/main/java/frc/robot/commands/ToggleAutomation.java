@@ -5,15 +5,25 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.command_groups;
+package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.commands.*;
+import frc.robot.*;
+import edu.wpi.first.wpilibj.command.Command;
 
-public class RocketHatchLow extends CommandGroup {
-  
-  public RocketHatchLow() {
-    addParallel(new _ArmDown(0.2));
-    addParallel(new _ElevatorDown(0.1));
+public class ToggleAutomation extends Command {
+  public ToggleAutomation() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
+
+  // Called just before this Command runs the first time
+  @Override
+	protected void initialize() {
+		Robot.switchAutonomous();
+	}
+
+	@Override
+	protected boolean isFinished() {
+		return true;
+	}
 }

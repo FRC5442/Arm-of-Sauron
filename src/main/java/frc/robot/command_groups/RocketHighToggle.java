@@ -17,14 +17,10 @@ public class RocketHighToggle extends CommandGroup {
    * Add your docs here.
    */
   public RocketHighToggle() {
-    if (Robot.arm != null) {
-      SmartDashboard.putBoolean("Hatch Test", Robot.arm.getHeight());
-      if(Robot.arm.getHeight()) {
-        addSequential(new RocketHatchHigh(), 5);
+   // if (Robot.arm != null) {
+   //   SmartDashboard.putBoolean("Hatch Test", Robot.arm.getHeight());
+   //     addSequential(new RocketHatchHigh(), 5);
       }
-      else {
+  //    else {
       //  addSequential(new RocketCargoHigh(), 5);
       }
-    }
-  }
-}

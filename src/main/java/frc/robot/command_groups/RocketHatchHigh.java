@@ -16,11 +16,11 @@ public class RocketHatchHigh extends CommandGroup {
   public RocketHatchHigh() {
     if(RobotMap.encoderArm.getDistance() > 4.5) {
       addParallel(new _ElevatorUp(7.6));
- //     addParallel(new _ArmDown(4.5));
+      addParallel(new _ArmDown(4.5));
     }
     else {
       addParallel(new _ElevatorUp(7.6));
-   //   addParallel(new _ArmUp(4.5));
+      addParallel(new _ArmUp(4.5));
     }
   }
 }
