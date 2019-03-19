@@ -53,7 +53,7 @@ public class WristPID extends PIDCommand {
   
   @Override
   protected boolean isFinished() {
-    return ((Math.abs(Robot.arm.wristThreshold) - Math.abs(RobotMap.encoderWrist.getDistance())) <= 0.01);
+    return ((Math.abs(Robot.arm.wristThreshold) - Math.abs(RobotMap.encoderWrist.getDistance())) <= 0.05);
   }
 
   
