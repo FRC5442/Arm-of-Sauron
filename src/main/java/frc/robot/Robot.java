@@ -122,12 +122,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    arm.armThreshold = 0;
-    arm.wristThreshold = 0;
+    arm.resetStuff();
     RobotMap.encoderScrewBack.reset();
-    RobotMap.encoderArm.reset();
-    RobotMap.encoderWrist.reset();
-    RobotMap.encoderVertical.reset();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove

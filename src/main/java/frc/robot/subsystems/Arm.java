@@ -49,7 +49,15 @@ public class Arm extends Subsystem {
   
   public void SwitchAutomation() {
 		automationToggle = !automationToggle;
-	}
+  }
+  
+  public void resetStuff() {
+    armThreshold = 0;
+    wristThreshold = 0;
+    RobotMap.encoderArm.reset();
+    RobotMap.encoderWrist.reset();
+    RobotMap.encoderVertical.reset();
+  }
 
   @Override
   public void initDefaultCommand() {
