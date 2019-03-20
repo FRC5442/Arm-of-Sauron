@@ -51,13 +51,10 @@ public class OI {
     xboxController2RStickBtn = new JoystickButton(xboxController2, 10);
 
 //    Xbox Controller 1
-    xboxController1X.whenPressed(new ToggleCompressor());
-    xboxController1A.whileHeld(new ArmUp());
-    xboxController1B.whileHeld(new ArmDown());
-    //xboxController1Y.whileHeld(new ElevatorDown());
-    xboxController1RBumper.whileHeld(new ClimbDrive(0.6));
-    xboxController1LBumper.whileHeld(new ClimbDrive(-0.6));
 
+    xboxController1X.whenPressed(new ToggleCompressor());
+    xboxController1LBumper.whileHeld(new IntakeDrive(1));
+    xboxController1RBumper.whileHeld(new IntakeDrive(-1));
 
     xboxController1LStickBtn.whenPressed(new LowGear());
     xboxController1RStickBtn.whenPressed(new HighGear());
@@ -65,23 +62,23 @@ public class OI {
 //    Xbox Controller 2
     xboxController2LBumper.whenPressed(new ToggleWristSolenoid());
     xboxController2RBumper.whenPressed(new ToggleChopstickSolenoid());
-
-    xboxController2A.whileHeld(new ElevatorUp());
-    xboxController2B.whileHeld(new ElevatorDown());
-    xboxController2X.whileHeld(new WristUp());
-    xboxController2Y.whileHeld(new WristDown());
-
-   // xboxController2LStickBtn.whileHeld(new ArmUp());
-   // xboxController2RStickBtn.whileHeld(new ArmDown()); 
-    
-    xboxController2Start.whenPressed(new ClimbExecutable());
-
-    /*
+    xboxController2Start.whenPressed(new ToggleAutomation());
     xboxController2X.whenPressed(new RocketHeightToggle());
-    xboxController2Y.whenPressed(new RocketHighToggle());
-    xboxController2B.whenPressed(new RocketMiddleToggle());
-    xboxController2A.whenPressed(new RocketLowToggle());
-    */
+    xboxController2RStickBtn.whileHeld(new WristDown());
+    xboxController2LStickBtn.whileHeld(new WristUp());
   }
 
+// Returns buttons for executable
+  public static boolean getAButton() {
+    return xboxController2.getRawButton(1);
+  }
+  public static boolean getBButton() {
+    return xboxController2.getRawButton(2);
+  }
+  public static boolean getYButton() {
+    return xboxController2.getRawButton(4);
+  }
+  public static boolean getXButton() {
+    return xboxController2.getRawButton(3);
+  }
 }

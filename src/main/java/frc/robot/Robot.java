@@ -32,16 +32,13 @@ public class Robot extends TimedRobot {
   public static Arm arm;
   public static Pneumatics pneumatics;
 
+  public static ArmPID armPID;
+  public static WristPID wristPID;
+
   public static boolean hatchMode;
-
-
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
-
-  public static void switchObj() {
-    hatchMode = !hatchMode;
-  }
 
   @Override
   public void robotInit() {
@@ -52,7 +49,10 @@ public class Robot extends TimedRobot {
     driveTrain = new DriveTrain();
     corkScrew = new CorkScrew();
 
-    hatchMode = true;
+    armPID = new ArmPID();
+    wristPID = new WristPID();
+
+    RobotMap.encoderArm.reset();
 
     SmartDashboard.putData("Auto mode", m_chooser);
   }
@@ -122,8 +122,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    arm.resetStuff();
     RobotMap.encoderScrewBack.reset();
-    RobotMap.encoderArm.reset();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -138,9 +138,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    Scheduler.getInstance().run();
+    if (!armPID.isRunning()) armPID.start();
+    if (!wristPID.isRunning()) wristPID.start();
 
-    SmartDashboard.putBoolean("Hatch Mode", hatchMode);
+    Scheduler.getInstance().run();
+    SmartDashboard.putBoolean("Hatch Mode", arm.heightToggle);
+    SmartDashboard.putBoolean("Auto Mode", arm.automationToggle);
     SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
     SmartDashboard.putNumber("Encoder for Arm", RobotMap.encoderArm.getDistance());
     SmartDashboard.putNumber("Encoder for ScrewBack", RobotMap.encoderScrewBack.getDistance());
@@ -155,5 +158,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+  }
+
+  public static void switchHeight() {
+    arm.SwitchHeight();
+  }
+
+  public static void switchAutonomous() {
+    arm.SwitchAutomation();
   }
 }

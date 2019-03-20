@@ -10,6 +10,7 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class _ArmDown extends Command {
 	private double enc_distance;
@@ -19,15 +20,19 @@ public class _ArmDown extends Command {
   }
 
   @Override
-	protected void execute() {
-		Robot.arm.rotateArm(1) ;
+  protected void execute() {
+	Robot.arm.rotateArm(0.4) ;
 	}
-	
+
 	@Override
 	protected boolean isFinished() {
-		return (Math.abs(RobotMap.encoderArm.getDistance()) <= enc_distance);
+		return (RobotMap.encoderArm.getDistance()) <= enc_distance;
 	}
-	
+	@Override
+	protected void interrupted() {
+		Robot.arm.rotateArm(0);
+	}
+
 	@Override
 	protected void end() {
 		Robot.arm.rotateArm(0);

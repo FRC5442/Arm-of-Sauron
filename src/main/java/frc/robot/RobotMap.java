@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.networktables.*;
 import com.kauailabs.navx.frc.AHRS;
 
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -41,6 +42,7 @@ public class RobotMap {
   public static Encoder encoderArm, encoderVertical, encoderWrist, encoderScrewBack, encoderScrewFront;
   public static DigitalInput lowElevatorSwitch, highElevatorSwitch;
   public static AHRS navx;
+ // public static PowerDistributionPanel pdp;
 
 
   public static Compressor compressor;
@@ -82,6 +84,7 @@ public class RobotMap {
     encoderWrist.setDistancePerPulse(1.0/360);
 
 		navx = new AHRS(SerialPort.Port.kMXP);
+		//pdp = new PowerDistributionPanel(1);
 
     lowElevatorSwitch = new DigitalInput(10);
     highElevatorSwitch = new DigitalInput(11);
@@ -92,8 +95,8 @@ public class RobotMap {
     driveTrain = new DifferentialDrive(leftMotorControllers, rightMotorControllers);
 
     compressor = new Compressor();
-    gearShift = new DoubleSolenoid(2, 3);
-    wristSolenoid = new DoubleSolenoid(0,1);
+    gearShift = new DoubleSolenoid(0, 1);
+    wristSolenoid = new DoubleSolenoid(2,3);
     chopstickSolenoid = new DoubleSolenoid(4,5);
   }
 

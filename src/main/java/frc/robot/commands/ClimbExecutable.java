@@ -23,8 +23,8 @@ public class ClimbExecutable extends Command{
 		this.up2 = new ScrewBackCom(0.5);
 		this.down2 = new ScrewBackCom(-0.5);
 
-		this.driveFor = new ClimbDrive(1);
-		this.driveBack = new ClimbDrive(-1);
+		this.driveFor = new IntakeDrive(1);
+		this.driveBack = new IntakeDrive(-1);
 	}
 	
 	@Override

@@ -10,11 +10,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ClimbDrive extends Command {
+public class IntakeDrive extends Command {
 
   double speed;
 
-  public ClimbDrive(double speed) {
+  public IntakeDrive(double speed) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     this.speed = speed;
