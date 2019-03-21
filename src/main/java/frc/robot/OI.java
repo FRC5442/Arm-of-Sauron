@@ -22,6 +22,7 @@ public class OI {
   public static JoystickButton xboxController1A, xboxController1B, xboxController1X, xboxController1Y;
   public static JoystickButton xboxController1LBumper, xboxController1RBumper;
   public static JoystickButton xboxController1LStickBtn, xboxController1RStickBtn;
+  public static JoystickButton xboxController1Start;
   public static JoystickButton xboxController2A, xboxController2B, xboxController2X, xboxController2Y, xboxController2LBumper, xboxController2RBumper;
   public static JoystickButton xboxController2LStickBtn, xboxController2RStickBtn;
   public static JoystickButton xboxController2Start;
@@ -35,6 +36,7 @@ public class OI {
     xboxController1Y = new JoystickButton(xboxController1, 4);
     xboxController1LBumper = new JoystickButton(xboxController1, 5);
     xboxController1RBumper = new JoystickButton(xboxController1, 6);
+    xboxController1Start = new JoystickButton(xboxController2, 8);
     xboxController1LStickBtn = new JoystickButton(xboxController1, 9);
     xboxController1RStickBtn = new JoystickButton(xboxController1, 10);
 
@@ -55,6 +57,7 @@ public class OI {
     xboxController1X.whenPressed(new ToggleCompressor());
     xboxController1LBumper.whileHeld(new IntakeDrive(1));
     xboxController1RBumper.whileHeld(new IntakeDrive(-1));
+    xboxController1Start.whenPressed(new ToggleClimbMode());
 
  //   xboxController1LStickBtn.whenPressed(new LowGear());
  //   xboxController1RStickBtn.whenPressed(new HighGear());

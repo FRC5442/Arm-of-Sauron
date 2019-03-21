@@ -17,8 +17,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class CorkScrew extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+  //public static boolean climbMode;
 
   public CorkScrew() {
+    //climbMode = false;
   }
 
   public void ScrewFront(double speedFront){
@@ -32,6 +34,17 @@ public class CorkScrew extends Subsystem {
   public void moveWheel(double speed){
     RobotMap.climbWheel.set(speed);
   }
+
+  public void resetStuff() {
+    RobotMap.encoderScrewFront.reset();
+    RobotMap.encoderScrewBack.reset();
+  }
+
+  /*
+  public void SwitchClimbMode() {
+    climbMode = !climbMode;
+  }
+  */
 
 
   @Override

@@ -35,6 +35,8 @@ public class Robot extends TimedRobot {
   public static ArmPID armPID;
   public static WristPID wristPID;
 
+  public static ClimbExecutable climbExe;
+
   public static boolean hatchMode;
 
   Command m_autonomousCommand;
@@ -51,6 +53,8 @@ public class Robot extends TimedRobot {
 
     armPID = new ArmPID();
     wristPID = new WristPID();
+
+    climbExe = new ClimbExecutable();
 
     RobotMap.encoderArm.reset();
 
@@ -123,7 +127,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     arm.resetStuff();
-    RobotMap.encoderScrewBack.reset();
+    corkScrew.resetStuff();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -144,6 +148,7 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     SmartDashboard.putBoolean("Hatch Mode", arm.heightToggle);
     SmartDashboard.putBoolean("Auto Mode", arm.automationToggle);
+    SmartDashboard.putBoolean("Climb Mode", climbExe.isRunning());
     SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
     SmartDashboard.putNumber("Encoder for Arm", RobotMap.encoderArm.getDistance());
     SmartDashboard.putNumber("Encoder for ScrewBack", RobotMap.encoderScrewBack.getDistance());
@@ -166,5 +171,9 @@ public class Robot extends TimedRobot {
 
   public static void switchAutonomous() {
     arm.SwitchAutomation();
+  }
+
+  public static void toggleClimb() {
+    climbExe.start();
   }
 }
