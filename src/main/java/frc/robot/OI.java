@@ -56,8 +56,8 @@ public class OI {
     xboxController1LBumper.whileHeld(new IntakeDrive(1));
     xboxController1RBumper.whileHeld(new IntakeDrive(-1));
 
-    xboxController1LStickBtn.whenPressed(new LowGear());
-    xboxController1RStickBtn.whenPressed(new HighGear());
+ //   xboxController1LStickBtn.whenPressed(new LowGear());
+ //   xboxController1RStickBtn.whenPressed(new HighGear());
 
 //    Xbox Controller 2
     xboxController2LBumper.whenPressed(new ToggleWristSolenoid());

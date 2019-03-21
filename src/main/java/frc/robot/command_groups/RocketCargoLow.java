@@ -14,11 +14,11 @@ import frc.robot.commands.*;
 public class RocketCargoLow extends CommandGroup {
   
   public RocketCargoLow() {
-    if(RobotMap.encoderVertical.getDistance() > 1.3) {
-      addSequential(new _ElevatorDown(1.3));
+    if(RobotMap.encoderVertical.getDistance() > 2.2) {
+      addSequential(new _ElevatorDown(2.2));
     }
     else{
-      addSequential(new _ElevatorUp(1.3));
+      addSequential(new _ElevatorUp(2.2));
     }
   }
 }

@@ -18,7 +18,7 @@ public class WristUp extends Command {
 
   @Override
 	protected void execute() {
-		Robot.arm.rotateWrist(0.85) ;
+		Robot.arm.rotateWrist(0.9) ;
 	}
 	
 	@Override

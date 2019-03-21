@@ -17,7 +17,7 @@ public class WristDown extends Command {
 
   @Override
 	protected void execute() {
-		Robot.arm.rotateWrist(-0.6) ;
+		Robot.arm.rotateWrist(-0.5) ;
 	}
 	
   @Override

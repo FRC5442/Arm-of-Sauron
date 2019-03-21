@@ -95,9 +95,9 @@ public class RobotMap {
     driveTrain = new DifferentialDrive(leftMotorControllers, rightMotorControllers);
 
     compressor = new Compressor();
-    gearShift = new DoubleSolenoid(0, 1);
+    gearShift = new DoubleSolenoid(4, 5);
     wristSolenoid = new DoubleSolenoid(2,3);
-    chopstickSolenoid = new DoubleSolenoid(4,5);
+    chopstickSolenoid = new DoubleSolenoid(0,1);
   }
 
 }

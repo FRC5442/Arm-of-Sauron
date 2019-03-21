@@ -30,7 +30,7 @@ public class Arm extends Subsystem {
   }
 
   public void rotateArm(double speed) {
-    RobotMap.armController.set(-speed);
+    RobotMap.armController.set(speed);
     armThreshold = RobotMap.encoderArm.getDistance();
   }
   
