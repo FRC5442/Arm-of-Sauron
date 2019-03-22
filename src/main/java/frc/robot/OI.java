@@ -36,7 +36,7 @@ public class OI {
     xboxController1Y = new JoystickButton(xboxController1, 4);
     xboxController1LBumper = new JoystickButton(xboxController1, 5);
     xboxController1RBumper = new JoystickButton(xboxController1, 6);
-    xboxController1Start = new JoystickButton(xboxController2, 8);
+    xboxController1Start = new JoystickButton(xboxController1, 8);
     xboxController1LStickBtn = new JoystickButton(xboxController1, 9);
     xboxController1RStickBtn = new JoystickButton(xboxController1, 10);
 

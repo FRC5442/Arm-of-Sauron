@@ -9,11 +9,14 @@ package frc.robot.commands;
 import frc.robot.OI;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.command_groups.*;
+import frc.robot.subsystems.CorkScrew;
 
 public class RocketExecutable extends Command {
   boolean toggle;
+  Command screwBackUp, screwFrontUp, screwBothDown;
   Command armUp, armDown, elevatorUp, elevatorDown;
   CommandGroup hatchLow, hatchMiddle, hatchHigh, cargoLow, cargoMiddle, cargoHigh;
   public RocketExecutable() {
@@ -27,6 +30,9 @@ public class RocketExecutable extends Command {
     armDown = new ArmDown();
     elevatorUp = new ElevatorUp();
     elevatorDown = new ElevatorDown();
+    screwBackUp = new ScrewBackCom(0.85);
+    screwFrontUp = new ScrewFrontCom(0.85);
+    screwBothDown = new ScrewBothDown();
     requires(Robot.arm);
   }
 
@@ -38,7 +44,7 @@ public class RocketExecutable extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (Robot.arm.heightToggle && Robot.arm.automationToggle) {
+    if (Robot.arm.heightToggle && Robot.arm.automationToggle && !Robot.corkScrew.climbMode) {
       if (OI.getAButton() && !hatchLow.isRunning()) {
         hatchMiddle.cancel();
         hatchHigh.cancel();
@@ -65,7 +71,7 @@ public class RocketExecutable extends Command {
       }
     }
     
-    if (!Robot.arm.heightToggle && Robot.arm.automationToggle) {
+    if (!Robot.arm.heightToggle && Robot.arm.automationToggle && !Robot.corkScrew.climbMode) {
       if (OI.getAButton() && !cargoLow.isRunning()) {
         cargoMiddle.cancel();
         cargoHigh.cancel();
@@ -91,7 +97,7 @@ public class RocketExecutable extends Command {
         cargoHigh.start();
       }
     }
-    if (!Robot.arm.automationToggle) {
+    if (!Robot.arm.automationToggle && !Robot.corkScrew.climbMode) {
       if (!OI.getAButton() && armUp.isRunning()) {
         armUp.cancel();
       }
@@ -119,6 +125,29 @@ public class RocketExecutable extends Command {
       else if (OI.getXButton() && !elevatorDown.isRunning()) {
         elevatorUp.cancel();
         elevatorDown.start();
+      }
+    }
+
+    SmartDashboard.putBoolean("Exe Climb-Mode", Robot.corkScrew.climbMode);
+
+    if(Robot.corkScrew.climbMode) {
+      if (!OI.getAButton() && screwBackUp.isRunning()) {
+        screwBackUp.cancel();
+      }
+      else if (!OI.getBButton() && screwFrontUp.isRunning()) {
+        screwFrontUp.cancel();
+      }
+      else if (!OI.getYButton() && screwBothDown.isRunning()) {
+        screwBothDown.cancel();
+      }
+      else if (OI.getAButton() && !screwBackUp.isRunning()) {
+        screwBackUp.start();
+      }
+      else if (OI.getBButton() && !screwFrontUp.isRunning()) {
+        screwFrontUp.start();
+      }
+      else if (OI.getYButton() && !screwBothDown.isRunning()) {
+        screwBothDown.start();
       }
     }
   }

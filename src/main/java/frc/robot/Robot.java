@@ -54,8 +54,6 @@ public class Robot extends TimedRobot {
     armPID = new ArmPID();
     wristPID = new WristPID();
 
-    climbExe = new ClimbExecutable();
-
     RobotMap.encoderArm.reset();
 
     SmartDashboard.putData("Auto mode", m_chooser);
@@ -146,9 +144,9 @@ public class Robot extends TimedRobot {
     if (!wristPID.isRunning()) wristPID.start();
 
     Scheduler.getInstance().run();
+    SmartDashboard.putBoolean("Climb Mode", corkScrew.climbMode);
     SmartDashboard.putBoolean("Hatch Mode", arm.heightToggle);
     SmartDashboard.putBoolean("Auto Mode", arm.automationToggle);
-    SmartDashboard.putBoolean("Climb Mode", climbExe.isRunning());
     SmartDashboard.putNumber("Encoder For Elevator", RobotMap.encoderVertical.getDistance());
     SmartDashboard.putNumber("Encoder for Arm", RobotMap.encoderArm.getDistance());
     SmartDashboard.putNumber("Encoder for ScrewBack", RobotMap.encoderScrewBack.getDistance());
@@ -174,6 +172,6 @@ public class Robot extends TimedRobot {
   }
 
   public static void toggleClimb() {
-    climbExe.start();
+    corkScrew.SwitchClimbMode();
   }
 }

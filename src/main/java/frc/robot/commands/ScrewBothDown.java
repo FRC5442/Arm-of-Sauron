@@ -6,12 +6,12 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-
-import frc.robot.*;
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ToggleClimbMode extends Command {
-  public ToggleClimbMode() {
+public class ScrewBothDown extends Command {
+  public ScrewBothDown() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -19,28 +19,45 @@ public class ToggleClimbMode extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.toggleClimb();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    if(Math.abs(RobotMap.encoderScrewBack.getDistance()) - Math.abs(RobotMap.encoderScrewFront.getDistance()) > 100) {
+      Robot.corkScrew.ScrewBack(0.425);
+      Robot.corkScrew.ScrewFront(0.85);
+    }
+    else if(Math.abs(RobotMap.encoderScrewFront.getDistance()) - Math.abs(RobotMap.encoderScrewBack.getDistance()) > 100) {
+      Robot.corkScrew.ScrewBack(0.85);
+      Robot.corkScrew.ScrewFront(0.425);
+    }
+    else {
+      Robot.corkScrew.ScrewBack(0.85);
+      Robot.corkScrew.ScrewFront(0.85);
+    }
+
+  
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return Math.abs(RobotMap.encoderScrewBack.getDistance()) > 21800.25;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.corkScrew.ScrewFront(0);
+    Robot.corkScrew.ScrewBack(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.corkScrew.ScrewFront(0);
+    Robot.corkScrew.ScrewBack(0);
   }
 }
