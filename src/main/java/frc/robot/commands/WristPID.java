@@ -13,7 +13,7 @@ import frc.robot.*;
 
 public class WristPID extends PIDCommand {
   public WristPID() {
-    super(0.5, 0.004, 0.002);
+    super(0.9, 0.006, 0.002);
 
     /* How P,I, and D values are calculated
       P = (1.2 * T) / (K * d)
@@ -42,7 +42,7 @@ public class WristPID extends PIDCommand {
 
   @Override
   public void usePIDOutput(double output) {
-    RobotMap.wristController.set(output);
+    RobotMap.wristController.set(-output);
     SmartDashboard.putNumber("PID Output Wrist", output);
   }
 

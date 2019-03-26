@@ -8,20 +8,21 @@
 package frc.robot.commands;
 
 import frc.robot.OI;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ClimbExecutable extends Command{
 
-	Command up1, up2;
-	Command down1, down2;
+	Command upFront, upBack;
+	Command downFront, downBack;
 	Command driveFor, driveBack;
 
 	public ClimbExecutable() {
-		this.up1 = new ScrewFrontCom(0.5);
-		this.down1 = new ScrewFrontCom(-0.5);
+		this.upFront = new ScrewFrontCom(0.5);
+		this.downFront = new ScrewFrontCom(-0.5);
 
-		this.up2 = new ScrewBackCom(0.5);
-		this.down2 = new ScrewBackCom(-0.5);
+		this.upBack = new ScrewBackCom(0.5);
+		this.downBack = new ScrewBackCom(-0.5);
 
 		this.driveFor = new IntakeDrive(1);
 		this.driveBack = new IntakeDrive(-1);
@@ -34,41 +35,41 @@ public class ClimbExecutable extends Command{
 	@Override
 	protected void execute() {
 		if(OI.xboxController2.getRawAxis(1) > 0) {
-			if(down1.isRunning())
-				down1.cancel();
-			else if (!up1.isRunning()) {
-				up1.start();
+			if(downFront.isRunning())
+				downFront.cancel();
+			else if (!upFront.isRunning()) {
+				upFront.start();
 			}
 		}
 		else if (OI.xboxController2.getRawAxis(1) < 0) {
-			if(up1.isRunning()) 
-				up1.cancel();
-			else if (!down1.isRunning()) {
-				down1.start();				
+			if(upFront.isRunning()) 
+				upFront.cancel();
+			else if (!downFront.isRunning()) {
+				downFront.start();				
 			}
 		}
 		else {
-			up1.cancel();
-			down1.cancel();
+			upFront.cancel();
+			downFront.cancel();
 		}
 
 		if (OI.xboxController2.getRawAxis(5) > 0) {
-			if(down2.isRunning())
-				down2.cancel();
-			else if (!up2.isRunning()) {
-				up2.start();
+			if(downBack.isRunning())
+				downBack.cancel();
+			else if (!upBack.isRunning()) {
+				upBack.start();
 			}
 		}
 		else if (OI.xboxController2.getRawAxis(5) < 0) {
-			if(up2.isRunning()) 
-				up2.cancel();
-			else if (!down2.isRunning()) {
-				down2.start();				
+			if(upBack.isRunning()) 
+				upBack.cancel();
+			else if (!downBack.isRunning()) {
+				downBack.start();				
 			}
 		}
 		else {
-			up2.cancel();
-			down2.cancel();
+			upBack.cancel();
+			downBack.cancel();
 		}
 
 		if (OI.xboxController2.getRawAxis(2) > 0) {
@@ -84,6 +85,37 @@ public class ClimbExecutable extends Command{
 		else {
 			driveBack.cancel();
 		}
+
+		//---
+		double joystickError = OI.xboxController2.getRawAxis(1) - OI.xboxController2.getRawAxis(5);
+		double encoderError = RobotMap.encoderScrewFront.getDistance() - RobotMap.encoderScrewBack.getDistance();
+
+		if (Math.abs(joystickError) <= 0.1) {
+			if (encoderError > 0.05) {
+				upFront = new ScrewFrontCom(0.5);
+				downFront = new ScrewFrontCom(-0.5);
+				upBack = new ScrewBackCom(0.55);
+				downBack = new ScrewBackCom(-0.45);
+			}
+			else if (encoderError < -0.05) {
+				upFront = new ScrewBackCom(0.55);
+				downFront = new ScrewBackCom(-0.45);
+				upBack = new ScrewBackCom(0.5);
+				downBack = new ScrewBackCom(-0.5);
+			}
+			else {
+				upFront = new ScrewFrontCom(0.5);
+				downFront = new ScrewFrontCom(-0.5);
+				upBack = new ScrewBackCom(0.5);
+				downBack = new ScrewBackCom(-0.5);
+			}
+		}
+		else {
+			upFront = new ScrewFrontCom(0.5);
+			downFront = new ScrewFrontCom(-0.5);
+			upBack = new ScrewBackCom(0.5);
+			downBack = new ScrewBackCom(-0.5);
+		}
 	}
 	
 	@Override
@@ -93,14 +125,14 @@ public class ClimbExecutable extends Command{
 
 	@Override
 	protected void end() {
-		if(down1.isRunning())
-			down1.cancel();
-		if(up1.isRunning()) 
-			up1.cancel();
-		if(down2.isRunning())
-			down2.cancel();
-		if(up2.isRunning()) 
-			up2.cancel();
+		if(downFront.isRunning())
+			downFront.cancel();
+		if(upFront.isRunning()) 
+			upFront.cancel();
+		if(downBack.isRunning())
+			downBack.cancel();
+		if(upBack.isRunning()) 
+			upBack.cancel();
 		if(driveFor.isRunning())
 			driveFor.cancel();
 		if(driveBack.isRunning()) 
@@ -109,14 +141,14 @@ public class ClimbExecutable extends Command{
 	
 	@Override
 	protected void interrupted() {
-		if(down1.isRunning())
-			down1.cancel();
-		if(up1.isRunning()) 
-			up1.cancel();
-		if(down2.isRunning())
-			down2.cancel();
-		if(up2.isRunning()) 
-			up2.cancel();
+		if(downFront.isRunning())
+			downFront.cancel();
+		if(upFront.isRunning()) 
+			upFront.cancel();
+		if(downBack.isRunning())
+			downBack.cancel();
+		if(upBack.isRunning()) 
+			upBack.cancel();
 		if(driveFor.isRunning())
 			driveFor.cancel();
 		if(driveBack.isRunning()) 

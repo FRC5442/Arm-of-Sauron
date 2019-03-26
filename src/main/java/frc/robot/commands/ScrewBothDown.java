@@ -6,14 +6,14 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import frc.robot.OI;
 import frc.robot.Robot;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class TankDrive extends Command {
-  public TankDrive() {
-    requires(Robot.driveTrain);
+public class ScrewBothDown extends Command {
+  public ScrewBothDown() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +24,20 @@ public class TankDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    DriveTrain.drive(OI.xboxController1.getRawAxis(5), (-1 * OI.xboxController1.getRawAxis(4)));
+    if(Math.abs(RobotMap.encoderScrewBack.getDistance()) - Math.abs(RobotMap.encoderScrewFront.getDistance()) > 100) {
+      Robot.corkScrew.ScrewBack(0.425);
+      Robot.corkScrew.ScrewFront(0.85);
+    }
+    else if(Math.abs(RobotMap.encoderScrewFront.getDistance()) - Math.abs(RobotMap.encoderScrewBack.getDistance()) > 100) {
+      Robot.corkScrew.ScrewBack(0.85);
+      Robot.corkScrew.ScrewFront(0.425);
+    }
+    else {
+      Robot.corkScrew.ScrewBack(0.85);
+      Robot.corkScrew.ScrewFront(0.85);
+    }
+
+  
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -36,11 +49,15 @@ public class TankDrive extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.corkScrew.ScrewFront(0);
+    Robot.corkScrew.ScrewBack(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.corkScrew.ScrewFront(0);
+    Robot.corkScrew.ScrewBack(0);
   }
 }

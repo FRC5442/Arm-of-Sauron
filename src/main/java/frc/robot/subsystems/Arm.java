@@ -39,7 +39,7 @@ public class Arm extends Subsystem {
   }
 
   public void rotateWrist(double speed) {
-    RobotMap.wristController.set(speed);
+    RobotMap.wristController.set(-speed);
     wristThreshold = RobotMap.encoderWrist.getDistance();
   }
 

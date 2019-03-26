@@ -23,7 +23,7 @@ public class DriveTrain extends Subsystem {
   }
 
   public static void drive(double leftSpeed, double rightSpeed) {
-    driveTrain.tankDrive(leftSpeed, rightSpeed);
+    driveTrain.arcadeDrive(leftSpeed, rightSpeed);
   }
  
   @Override
