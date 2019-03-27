@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 public class WristDown extends Command {
   public WristDown() {
     // Use requires() here to declare subsystem dependencies
@@ -17,7 +18,7 @@ public class WristDown extends Command {
 
   @Override
 	protected void execute() {
-		Robot.arm.rotateWrist(-0.3) ;
+		new _WristAuto(RobotMap.encoderWrist.getDistance() - 0.1);
 	}
 	
   @Override

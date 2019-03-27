@@ -20,12 +20,12 @@ public class _WristUp extends Command {
 
   @Override
 	protected void execute() {
-		Robot.arm.rotateArm(1) ;
+		Robot.arm.rotateWrist(0.6) ;
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		return (Math.abs(RobotMap.encoderArm.getDistance()) >= enc_distance);
+		return (Math.abs(RobotMap.encoderWrist.getDistance()) >= enc_distance);
 	}
 	
 	@Override

@@ -11,21 +11,35 @@ import frc.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class _WristDown extends Command {
-	private double enc_distance;
+public class _WristAuto extends Command {
+  private double enc_distance;
+  Command wristUp, wristDown;
 
-  public _WristDown(double distance) {
-		enc_distance = distance;
+  public _WristAuto(double distance) {
+    enc_distance = distance;
+    wristUp = new _WristUp(enc_distance);
+    wristDown = new _WristDown(enc_distance);
   }
 
   @Override
 	protected void execute() {
-		Robot.arm.rotateWrist(-0.3) ;
-	}
+    if (RobotMap.encoderWrist.getDistance() > enc_distance) {
+      wristUp.cancel();
+      wristDown.start();
+    }
+    else if (RobotMap.encoderWrist.getDistance() < enc_distance) {
+      wristDown.cancel();
+      wristUp.start();
+    }
+    else {
+      wristDown.cancel();
+      wristUp.cancel();
+    }
+  }
 	
 	@Override
 	protected boolean isFinished() {
-		return (Math.abs(RobotMap.encoderWrist.getDistance()) <= enc_distance);
+		return false;
 	}
 	
 	@Override

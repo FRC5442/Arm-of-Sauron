@@ -8,6 +8,7 @@
 package frc.robot.commands;
 import frc.robot.OI;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -16,6 +17,7 @@ import frc.robot.subsystems.CorkScrew;
 
 public class RocketExecutable extends Command {
   boolean toggle;
+  Command wristDown, wristUp;
   Command screwBackUp, screwFrontUp, screwBothDown;
   Command armUp, armDown, elevatorUp, elevatorDown;
   CommandGroup hatchLow, hatchMiddle, hatchHigh, cargoLow, cargoMiddle, cargoHigh;
@@ -33,6 +35,9 @@ public class RocketExecutable extends Command {
     screwBackUp = new ScrewBackCom(0.85);
     screwFrontUp = new ScrewFrontCom(0.85);
     screwBothDown = new ScrewBothDown();
+    wristDown = new WristDown();
+    wristUp = new WristUp();
+    
     requires(Robot.arm);
   }
 
@@ -44,6 +49,20 @@ public class RocketExecutable extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+
+    if (OI.xboxController2.getRawAxis(2) > 0.6 && !wristDown.isRunning()) {
+      wristDown.start();
+      wristUp.cancel();
+    }
+    else if (OI.xboxController2.getRawAxis(3) > 0.6 && !wristUp.isRunning()) {
+      wristUp.start();
+      wristDown.cancel();
+    }
+    else {
+      wristDown.cancel();
+      wristUp.cancel();
+    }
+
     if (Robot.arm.heightToggle && Robot.arm.automationToggle && !Robot.corkScrew.climbMode) {
       if (OI.getAButton() && !hatchLow.isRunning()) {
         hatchMiddle.cancel();

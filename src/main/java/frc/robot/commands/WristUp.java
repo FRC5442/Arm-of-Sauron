@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class WristUp extends Command {
   public WristUp() {
@@ -18,7 +19,7 @@ public class WristUp extends Command {
 
   @Override
 	protected void execute() {
-		Robot.arm.rotateWrist(0.6) ;
+		new _WristAuto(RobotMap.encoderWrist.getDistance() + 0.1);
 	}
 	
 	@Override
