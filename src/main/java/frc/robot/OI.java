@@ -67,8 +67,8 @@ public class OI {
     xboxController2RBumper.whenPressed(new ToggleChopstickSolenoid());
     xboxController2Start.whenPressed(new ToggleAutomation());
     xboxController2X.whenPressed(new RocketHeightToggle());
-//  xboxController2RStickBtn.whileHeld(new WristDown());
-//  xboxController2LStickBtn.whileHeld(new WristUp());
+    xboxController2RStickBtn.whileHeld(new WristDown());
+    xboxController2LStickBtn.whileHeld(new WristUp());
   }
 
 // Returns buttons for executable
