@@ -167,7 +167,11 @@ public class Robot extends TimedRobot {
     arm.SwitchAutomation();
   }
 
-  public static void toggleClimb() {
-    corkScrew.SwitchClimbMode();
+  public static void toggleClimbTrue() {
+    corkScrew.ClimbModeTrue();
+  }
+
+  public static void toggleClimbFalse() {
+    corkScrew.ClimbModeFalse();
   }
 }
