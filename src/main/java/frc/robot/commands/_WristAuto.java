@@ -39,7 +39,8 @@ public class _WristAuto extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-		return false;
+    return false;
+    //Might need a conditional to finish this 
 	}
 	
 	@Override
