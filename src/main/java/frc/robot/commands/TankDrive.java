@@ -28,7 +28,7 @@ public class TankDrive extends Command {
       DriveTrain.drive(OI.xboxController1.getRawAxis(5), (-1 * OI.xboxController1.getRawAxis(4)));
     }
     else if (!Robot.corkScrew.climbMode) {
-      DriveTrain.drive(OI.xboxController2.getRawAxis(1), (-1 * OI.xboxController1.getRawAxis(0)));
+      DriveTrain.drive(OI.xboxController2.getRawAxis(1), (-1 * OI.xboxController2.getRawAxis(0)));
     }
   }
 
