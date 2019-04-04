@@ -19,7 +19,7 @@ public class WristUp extends Command {
 
   @Override
 	protected void execute() {
-		new _WristAuto(RobotMap.encoderWrist.getDistance() + 0.1);
+		Robot.arm.rotateWrist(0.8);
 	}
 	
 	@Override

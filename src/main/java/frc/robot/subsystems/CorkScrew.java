@@ -41,8 +41,12 @@ public class CorkScrew extends Subsystem {
   }
 
   
-  public void SwitchClimbMode() {
+  public void ClimbMode() {
     climbMode = !climbMode;
+  }
+
+  public void ClimbModeFalse() {
+    climbMode = false;
   }
 
 

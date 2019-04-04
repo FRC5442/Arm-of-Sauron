@@ -11,6 +11,7 @@ import frc.robot.*;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ToggleClimbMode extends Command {
+
   public ToggleClimbMode() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -19,7 +20,7 @@ public class ToggleClimbMode extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.toggleClimb();
+    Robot.toggleClimbMode();
   }
 
   // Called repeatedly when this Command is scheduled to run
