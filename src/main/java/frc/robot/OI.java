@@ -65,7 +65,7 @@ public class OI {
  //   xboxController1RStickBtn.whenPressed(new HighGear());
 
 //    Xbox Controller 2
-    xboxController2LBumper.whenPressed(new _WristAuto(1.3));
+    xboxController2LBumper.whenPressed(new _WristAuto(0.4));
     xboxController2RBumper.whenPressed(new ToggleChopstickSolenoid());
     xboxController2Start.whenPressed(new ToggleAutomation());
     xboxController2X.whenPressed(new RocketHeightToggle());

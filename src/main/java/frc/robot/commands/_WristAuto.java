@@ -39,7 +39,7 @@ public class _WristAuto extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-    return false;
+    return RobotMap.encoderWrist.getDistance() < enc_distance - 0.05 || RobotMap.encoderWrist.getDistance() > enc_distance + 0.05;
     //Might need a conditional to finish this 
 	}
 	
