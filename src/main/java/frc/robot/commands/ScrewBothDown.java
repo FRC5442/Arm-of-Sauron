@@ -25,16 +25,16 @@ public class ScrewBothDown extends Command {
   @Override
   protected void execute() {
     if(Math.abs(RobotMap.encoderScrewBack.getDistance()) - Math.abs(RobotMap.encoderScrewFront.getDistance()) > 100) {
-      Robot.corkScrew.ScrewBack(0.425);
-      Robot.corkScrew.ScrewFront(0.85);
+      Robot.corkScrew.ScrewBack(0.5);
+      Robot.corkScrew.ScrewFront(0.9);
     }
     else if(Math.abs(RobotMap.encoderScrewFront.getDistance()) - Math.abs(RobotMap.encoderScrewBack.getDistance()) > 100) {
-      Robot.corkScrew.ScrewBack(0.85);
-      Robot.corkScrew.ScrewFront(0.425);
+      Robot.corkScrew.ScrewBack(0.9);
+      Robot.corkScrew.ScrewFront(0.5);
     }
     else {
-      Robot.corkScrew.ScrewBack(0.85);
-      Robot.corkScrew.ScrewFront(0.85);
+      Robot.corkScrew.ScrewBack(0.9);
+      Robot.corkScrew.ScrewFront(0.9);
     }
 
   

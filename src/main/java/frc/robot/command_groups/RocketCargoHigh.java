@@ -13,7 +13,7 @@ import frc.robot.commands.*;
 public class RocketCargoHigh extends CommandGroup {
   
   public RocketCargoHigh() {
-    addParallel(new _ElevatorUp(7.8));
+    addParallel(new _ElevatorUp(7.5));
     addParallel(new _ArmUp(5.2));
   }
 }

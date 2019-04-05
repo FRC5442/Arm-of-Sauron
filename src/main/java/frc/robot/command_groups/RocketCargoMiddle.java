@@ -17,11 +17,11 @@ public class RocketCargoMiddle extends CommandGroup {
     if(RobotMap.encoderArm.getDistance() > 4.7) {
       //addParallel(new _ElevatorDown(7.6));
       addParallel(new _ElevatorDown(0.1));
-      addParallel(new _ArmDown(4.7));
+      addParallel(new _ArmDown(4.5));
     }
     else{
       addParallel(new _ElevatorDown(0.1));
-      addParallel(new _ArmUp(4.7));
+      addParallel(new _ArmUp(4.5));
     }
   }
 }

@@ -32,8 +32,8 @@ public class RocketExecutable extends Command {
     armDown = new ArmDown();
     elevatorUp = new ElevatorUp();
     elevatorDown = new ElevatorDown();
-    screwBackUp = new ScrewBackCom(0.85);
-    screwFrontUp = new ScrewFrontCom(0.85);
+    screwBackUp = new ScrewBackCom(0.9);
+    screwFrontUp = new ScrewFrontCom(0.9);
     screwBothDown = new ScrewBothDown();
     wristDown = new WristDown();
     wristUp = new WristUp();

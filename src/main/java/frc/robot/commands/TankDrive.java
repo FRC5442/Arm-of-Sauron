@@ -24,7 +24,7 @@ public class TankDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    DriveTrain.drive(OI.xboxController1.getRawAxis(5), (-1 * OI.xboxController1.getRawAxis(4)));
+    DriveTrain.drive(OI.xboxController1.getRawAxis(5), (-0.75 * OI.xboxController1.getRawAxis(4)));
   }
 
   // Make this return true when this Command no longer needs to run execute()
