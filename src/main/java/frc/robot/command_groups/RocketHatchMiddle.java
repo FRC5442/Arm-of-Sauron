@@ -14,11 +14,11 @@ import frc.robot.commands.*;
 public class RocketHatchMiddle extends CommandGroup {
   
   public RocketHatchMiddle() {
-    if (RobotMap.encoderVertical.getDistance() < 7.8) {
-      addParallel(new _ElevatorUp(7.8));
+    if (RobotMap.encoderArm.getDistance() < 3.5) {
+      addParallel(new _ArmUp(3.5));
     }
     else {
-      addParallel(new _ElevatorDown(7.8));
+      addParallel(new _ArmDown(3.5));
     }
   }
 }
