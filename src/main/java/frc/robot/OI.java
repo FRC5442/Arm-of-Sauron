@@ -102,11 +102,11 @@ public class OI {
     xboxController2A.whileHeld(new ElevatorUp());
     xboxController2B.whileHeld(new ElevatorDown());
 
-    xboxController2X.whileHeld(new WristUp());
-    xboxController2Y.whileHeld(new WristDown());
+    xboxController2X.whileHeld(new ArmUp());
+    xboxController2Y.whileHeld(new ArmDown());
 
-    xboxController2LStickBtn.whileHeld(new ArmUp());
-    xboxController2RStickBtn.whileHeld(new ArmDown());    
+    xboxController2LStickBtn.whileHeld(new WristUp());
+    xboxController2RStickBtn.whileHeld(new WristDown());    
   }
 
 }
