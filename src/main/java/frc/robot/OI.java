@@ -99,9 +99,6 @@ public class OI {
     xboxController2LBumper.whenPressed(new ToggleChopstickSolenoid());
     xboxController2RBumper.whenPressed(new ToggleWristSolenoid());
 
-    xboxController2A.whileHeld(new ElevatorUp());
-    xboxController2B.whileHeld(new ElevatorDown());
-
     xboxController2X.whileHeld(new ArmUp());
     xboxController2Y.whileHeld(new ArmDown());
 
