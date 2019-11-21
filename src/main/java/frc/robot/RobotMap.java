@@ -1,3 +1,4 @@
+
 /*----------------------------------------------------------------------------*/
 /* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
@@ -8,9 +9,9 @@
 package frc.robot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.networktables.*;
+
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -38,8 +39,10 @@ public class RobotMap {
   
   public static SpeedControllerGroup leftMotorControllers, rightMotorControllers, corkMotorControllers;
   
-  public static Encoder encoderLeft, encoderRight;
-  public static Encoder encoderArm, encoderVertical, encoderWrist;
+  public static Encoder encoderArm, encoderVertical, encoderWrist, encoderScrewBack, encoderScrewFront;
+  public static DigitalInput lowElevatorSwitch, highElevatorSwitch;
+ // public static PowerDistributionPanel pdp;
+
 
   public static Compressor compressor;
   public static DoubleSolenoid wristSolenoid;
@@ -49,44 +52,50 @@ public class RobotMap {
   public static NetworkTableInstance inst;
 
   public RobotMap() {
-    leftController1 = new WPI_VictorSPX(2);
-    leftController2 = new WPI_VictorSPX(3);
-    //leftController3 = new WPI_VictorSPX(3);
-    rightController1 = new WPI_VictorSPX(0);
-    rightController2 = new WPI_VictorSPX(1);
-    //rightController3 = new WPI_VictorSPX(2);
-    //corkControllerFront = new WPI_VictorSPX(6);
-    //corkControllerBack = new WPI_VictorSPX(5);  **PORT CONFLICT DO NOT UNCOMMENT**
-    //climbWheel = new WPI_VictorSPX(4);
-    verticalController = new WPI_VictorSPX(9);
-    wristController = new WPI_VictorSPX(8);
-    armController = new WPI_VictorSPX(5);
+    leftController1 = new WPI_VictorSPX(10);
+    leftController2 = new WPI_VictorSPX(11);
+    leftController3 = new WPI_VictorSPX(12);
+    rightController1 = new WPI_VictorSPX(7);
+    rightController2 = new WPI_VictorSPX(8);
+    rightController3 = new WPI_VictorSPX(9);
+    corkControllerFront = new WPI_VictorSPX(2);
+    corkControllerBack = new WPI_VictorSPX(3);
+    climbWheel = new WPI_VictorSPX(1);
+    verticalController = new WPI_VictorSPX(0);
+    wristController = new WPI_VictorSPX(4);
+    armController = new WPI_VictorSPX(6);
 
-    encoderLeft = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-    encoderRight = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
-    encoderVertical = new Encoder(4, 5 ,false, Encoder.EncodingType.k4X);
+
+    encoderVertical = new Encoder(6, 7 ,true, Encoder.EncodingType.k4X);
     encoderVertical.setSamplesToAverage(5);
 		encoderVertical.setDistancePerPulse(1.0/360);
-    encoderArm = new Encoder(10, 14, false, Encoder.EncodingType.k4X);
+    encoderArm = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
     encoderArm.setSamplesToAverage(5);
 		encoderArm.setDistancePerPulse(1.0/360);
-    encoderWrist = new Encoder(8, 9, false, Encoder.EncodingType.k4X);
+    encoderWrist = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
     encoderWrist.setSamplesToAverage(5);
-		encoderWrist.setDistancePerPulse(1.0/360);
+    encoderWrist.setDistancePerPulse(1.0/360);
+    encoderScrewBack = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
+    encoderWrist.setSamplesToAverage(5);
+    encoderWrist.setDistancePerPulse(1.0/360);
+    encoderScrewFront = new Encoder(8, 9, false, Encoder.EncodingType.k4X);
+    encoderWrist.setSamplesToAverage(5);
+    encoderWrist.setDistancePerPulse(1.0/360);
 
+		//pdp = new PowerDistributionPanel(1);
 
-    leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2/*, leftController3*/);
-    rightMotorControllers = new SpeedControllerGroup(rightController1, rightController2/*, rightController3*/);
+    lowElevatorSwitch = new DigitalInput(10);
+    highElevatorSwitch = new DigitalInput(11);
+
+    leftMotorControllers = new SpeedControllerGroup(leftController1, leftController2);
+    rightMotorControllers = new SpeedControllerGroup(rightController2, rightController3);
 
     driveTrain = new DifferentialDrive(leftMotorControllers, rightMotorControllers);
 
     compressor = new Compressor();
-    gearShift = new DoubleSolenoid(0, 1);
-
-    inst = NetworkTableInstance.getDefault();
-		table = inst.getTable("/vision");
-    wristSolenoid = new DoubleSolenoid(4,5);
-    chopstickSolenoid = new DoubleSolenoid(2,3);
+    gearShift = new DoubleSolenoid(4, 5);
+    wristSolenoid = new DoubleSolenoid(2,3);
+    chopstickSolenoid = new DoubleSolenoid(0,1);
   }
 
 }
