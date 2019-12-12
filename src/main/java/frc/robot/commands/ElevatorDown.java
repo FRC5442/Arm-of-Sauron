@@ -6,43 +6,36 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import frc.robot.OI;
+
 import frc.robot.Robot;
-import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class TankDrive extends Command {
-  public TankDrive() {
-    requires(Robot.driveTrain);
+public class ElevatorDown extends Command {
+  public ElevatorDown() {
+    
   }
 
-  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.arm.moveElevator(-1);
   }
-
-  // Called repeatedly when this Command is scheduled to run
+ 
   @Override
   protected void execute() {
-    double for_back = OI.xboxController1.getRawAxis(1);
-    double yaw = OI.xboxController1.getRawAxis(5);
-    DriveTrain.drive(for_back * Math.abs(for_back), yaw * Math.abs(yaw));
   }
-
-  // Make this return true when this Command no longer needs to run execute()
+  
   @Override
   protected boolean isFinished() {
     return false;
   }
 
-  // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.arm.moveElevator(0);
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.arm.moveElevator(0);
   }
 }

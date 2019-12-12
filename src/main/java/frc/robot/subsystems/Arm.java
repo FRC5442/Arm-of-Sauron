@@ -29,6 +29,10 @@ public class Arm extends Subsystem {
     RobotMap.wristController.set(.4*speed);
   }
 
+  public void moveElevator(double speed){
+    RobotMap.verticalController.set(0.5*speed);
+  }
+
   @Override
   public void initDefaultCommand() {
  //   setDefaultCommand(new ArmExecutable());
